@@ -1,12 +1,20 @@
 import {combineReducers} from '../libs/redux'
-import talks from './talksReducers';
+import talks from './talksReducers'
+import banners from './bannerReducers.js'
+import merge from '../libs/lodash.merge';
+import { defaultEntities } from '../schemas/schema';
 
-const todos = require('./todos.js')
-const visibilityFilter = require('./visibilityFilter.js')
+
+function entities(state = defaultEntities, action) {
+    if(action.response && action.response.entities) {
+        return merge({}, state, action.response.entities);
+    }
+    return state;
+}
 
 export default combineReducers({
-    todos,
-    visibilityFilter,
-    talks
+    talks,
+    banners,
+    entities
 })
 

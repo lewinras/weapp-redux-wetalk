@@ -1,5 +1,5 @@
 //app.js
-import {Provider} from './libs/wechat-weapp-redux'
+import {Provider} from './libs/wechat-redux'
 import store from './configureStore';
 
 App(

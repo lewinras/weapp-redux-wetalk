@@ -1,7 +1,5 @@
-/**
- * Created by luqingchuan on 2016/12/1.
- */
 import {Promise} from '../libs/promise'
+import { normalize } from '../libs/normalizr.min';
 const API_ROOT = 'http://www.duilu.me/';
 function callApi(url, options = {}) {
     const fullUrl = (url.indexOf(API_ROOT === -1) ? API_ROOT + url : url)
@@ -21,7 +19,6 @@ function callApi(url, options = {}) {
 export const CALL_API = Symbol('WeTalk Api')
 
 export default store => next => action => {
-    console.log('dsfsdf')
     const callAPI = action[CALL_API]
     if(typeof callAPI === 'undefined') {
         return next(action)
@@ -58,9 +55,9 @@ export default store => next => action => {
     next(actionWith({ type: requestType, ...payload}))
 
     return callApi(endpoint, options)
-        .then(res => res.data)
+        .then(res => normalize(res.data, schema))
         .then(response => {
-            let suc =successType;
+            let suc = successType;
             if(typeof suc === 'function'){
                 suc = suc(next, response)
             }

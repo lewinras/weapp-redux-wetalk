@@ -1,8 +1,8 @@
 //index.js
-import { getTalksList } from '../../utils/api'
-import { connect } from '../../libs/wechat-weapp-redux'
-import {addTodo, setVisibilityFilter, toggleTodo} from  '../../actions/index.js'
-import { fetchTalksIfNeeded } from '../../actions/talksActionCreators'
+import {getTalksList} from '../../utils/api'
+import {connect} from '../../libs/wechat-redux'
+import {fetchTalksIfNeeded} from '../../actions/talksActionCreators'
+import {requestBannerIfNeeded} from '../../actions/bannerActionCreators'
 const pageConfig = {
     data: {
         tabs: ["全部", "求职", "升学", "创业", "自由职业"],
@@ -65,15 +65,17 @@ const pageConfig = {
 
     onLoad() {
         this.fetchTalks()
+        this.fetchBanners()
     }
 }
 const mapStateToData = state => ({
-    lists: state.talks,
+    list: state.talks,
 
 })
 
 const mapDispatchToPage = dispatch => ({
-fetchTalks: ()=> dispatch(fetchTalksIfNeeded())
+    fetchTalks: () => dispatch(fetchTalksIfNeeded()),
+    fetchBanners: () => dispatch(requestBannerIfNeeded())
 })
 const nextPageConfig = connect(mapStateToData, mapDispatchToPage)(pageConfig)
 Page(nextPageConfig)

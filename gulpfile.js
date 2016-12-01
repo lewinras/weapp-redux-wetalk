@@ -31,6 +31,7 @@ gulp.task('compile:img', () => {
         .pipe(gulp.dest('dist/images'))
 })
 
+// Compile xml source to distribution directory
 gulp.task('compile:xml', () => {
     return gulp.src(['src/**/*.xml'])
         .pipe(plugins.if(isProduction, plugins.htmlmin({
@@ -47,14 +48,16 @@ gulp.task('compile:xml', () => {
         .pipe(gulp.dest('dist'))
 })
 
+// Compile css source to distribution directory
 gulp.task('compile:css', () => {
     return gulp.src(['src/**/*.css'])
         .pipe(plugins.rename({ extname: '.wxss' }))
         .pipe(gulp.dest('dist'))
 })
 
+// Compile sass source to distribution directory
 gulp.task('compile:sass', () => {
-    return gulp.src(['src/**/*.less'])
+    return gulp.src(['src/**/*.sass'])
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.sass())
         .pipe(plugins.if(isProduction, plugins.cssnano({ compatibility: '*' })))
@@ -62,6 +65,8 @@ gulp.task('compile:sass', () => {
         .pipe(plugins.sourcemaps.write('.'))
         .pipe(gulp.dest('dist'))
 })
+
+//Compile all
 gulp.task('compile', ['clean'], next => {
     runSequence([
         'compile:json',
@@ -71,6 +76,7 @@ gulp.task('compile', ['clean'], next => {
         'compile:css'
     ], next)
 })
+
 
 //default tasks
 gulp.task('default', ['compile'])
