@@ -1,0 +1,15 @@
+<import src="../common/item/item"/>
+<view class="container">
+    <scroll-view scroll-y="true" bindscrolltolower="handleLoadMore" class="search-list">
+        <view class="search-bar">
+            <view class="container1">
+            <input bindinput="bindInput"/>
+            </view>
+            <view catchtap='searchQuestion' class="button base-green">搜索</view>
+        </view>
+        <template is="talks-item" data="{{hasMore, list}}"/>
+    </scroll-view>
+    <loading hidden="{{!loading}}">
+        加载中...
+    </loading>
+</view>

@@ -1,0 +1,24 @@
+<import src="../common/record/record"/>
+<scroll-view scroll-y="true" class="container">
+    <image class="banner" src="http://cdn-img.duilu.me/37d9f545a608430bad87fba30ad039dc.png?imageView2/2/w/1978/h/320"/>
+    <view class="question">
+        <view class="questioner">
+            <image class="avatar" src="http://cdn-img.duilu.me/18613a0ac48440e992ea04afb15a57fa?imageView2/2/w/50/h/50"/>
+            <text class="name font-deep">白天天邀请你做一个访谈</text>
+        </view>
+        <text class="title font-deep">韩晔， 工作一年多，在互联网公司做设计师的你还好么？</text>
+        <text class="prompt font-light">说明： 完成朋友对你的访谈，收录进WeTalk专题后，双方各获得10元现金红包（发放到微信钱包）。对高质量的访谈， 我们还会送上小礼物</text>
+        <text class="link font-green">查看本期专题其他人的访谈 ></text>
+    </view>
+    <view class="answer">
+        <view class="container2">
+            <text style="color: #2fbd83">文字回答</text>
+            <view class="divider1"/>
+            <text style="color: #9ba3b4">语音回答</text>
+        </view>
+        <view class="divider2"/>
+        <template is="talks-text-record" data="{{list}}"/>
+        <view class="comment">提交</view>
+        <text class="prompt font-green">你可以暂时关掉页面，下次打开可以继续回答</text>
+    </view>
+</scroll-view>

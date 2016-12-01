@@ -1,0 +1,25 @@
+<!--talks.wxml-->
+<import src="../common/item/item"/>
+<view class="container">
+<view class="talks-tab">
+    <view class="container1">
+        <block wx:for="{{tabs}}" wx:key="this*">
+            <view class="item" style="color: {{category_id == index + 1 ? '#2fbd83' : '#49546e' }}" data-id="{{index + 1}}"
+                  catchtap="categorySelected">
+                <text class="title font-normal">{{item}}</text>
+            </view>
+        </block>
+    </view>
+    <navigator url="../record/record">
+        <image class="icon" src="../../images/search.png"/>
+    </navigator>
+</view>
+<scroll-view scroll-y="true" class="talks-scrollview" bindscrolltolower="handleLoadMore">
+    <image class="banner" wx:if="{{category_id == 1}}" src="http://cdn-img.duilu.me/37d9f545a608430bad87fba30ad039dc.png?imageView2/2/w/1978/h/320"/>
+    <template is="talks-item" data="{{list, hasMore}}"/>
+</scroll-view>
+<loading hidden="{{!loading}}">
+    加载中...
+</loading>
+</view>
+

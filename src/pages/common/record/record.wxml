@@ -1,0 +1,9 @@
+<template name="talks-text-record">
+    <block wx:for="{{list}}" wx:key="this*">
+        <view class="talks-text-record-item">
+            <text class="title font-deep">{{item}}</text>
+            <textarea class="input" placeholder="写回答····"/>
+            <view class="divider1"/>
+        </view>
+    </block>
+</template>

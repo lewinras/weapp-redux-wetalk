@@ -1,0 +1,44 @@
+@import '../common/item/item';
+
+.search-bar {
+    width: 750rpx;
+    height: 49px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-bar .container1 {
+    margin-left: 20px;
+    margin-right: 10px;
+    background-color: #ebebeb;
+    flex: 1;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.search-bar .button {
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 20px;
+    height: 30px;
+    color: #fff;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.search-list{
+    display:flex;
+    flex:1;
+}
+
+.search-bar input{
+    line-height: 100%;
+    height:100%;
+    padding-left:10px;
+    padding-right:10px;
+}

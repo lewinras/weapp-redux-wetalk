@@ -1,0 +1,70 @@
+
+.talks-item {
+    background-color: #fff;
+    justify-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.talks-item .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.talks-item .title {
+    font-size: 18px;
+    display: block;
+    line-height: 24px;
+}
+
+.talks-item .oractor {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.talks-item .bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 14px;
+    align-items: flex-start;
+}
+
+.talks-item .voice-bar {
+    border-radius: 0px 80px 80px 80px;
+    width: 140px;
+    height: 36px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.talks-item .voice-text {
+    color: #fff;
+    font-size: 14px;
+    margin-left: 20px;
+    line-height: 18px;
+}
+
+.footbar {
+    font-size: 28rpx;
+    text-align: center;
+    padding: 50rpx;
+    color: #ccc;
+}
+
+.footbar text {
+    vertical-align: middle;
+}
+
+.footbar image {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 20rpx;
+}

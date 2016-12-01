@@ -1,0 +1,223 @@
+.detail-info{
+    background-color: #fff;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+.detail-info image{
+    margin-top: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.detail-info .title{
+    margin-top: 24px;
+    text-align:  center;
+    font-size: 20px;
+    line-height: 26px;
+}
+.detail-info .name{
+    font-size: 14px;
+    margin-top: 30px;
+}
+.detail-info .tags{
+    margin-top: 6px;
+    text-align:  center;
+}
+.detail-info .tags .info{
+    font-size: 14px;
+    margin-top: 6px;
+}
+.detail-info .divider1{
+    width: 12px;
+    height: 2px;
+    background-color: #2fbd83;
+    margin-top: 24px;
+}
+.detail-info .description{
+    margin-top: 17px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+.detail-info .container1{
+    font-size: 14px;
+    flex-direction: row;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 24px;
+}
+
+.detail-info .button{
+   height: 40px;
+   width: 100%;
+   border-radius: 5px;
+   margin-bottom: 30px;
+   color: #fff;
+   text-align: center;
+   line-height: 40px;
+   font-size: 14px;
+}
+
+.audio-list{
+    margin-top: 10px;
+    width: 100%;
+    background-color: #fff;
+    display:flex;
+    flex-direction: column;
+}
+
+.audio-list .title{
+    font-size: 16px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    line-height: 24px;
+}
+
+.audio-list .container1{
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.audio-list .container1 .avatar{
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.audio-list .container1 .audio{
+    border-radius: 0px 80px 80px 80px;
+    height: 36px;
+}
+
+.audio-list .divider1{
+    background-color: #e8e8e8;
+    width: 100%;
+    height: 1px;
+}
+
+.audio-list .audio-length{
+    font-size: 14px;
+    /*text-align: center;*/
+    line-height: 36px;
+    margin-left: 10px;
+}
+
+.comment-list{
+    background-color: #fff;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.comment-list .item{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+.comment-list .item .avatar{
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 50%;
+}
+.comment-list .item .container1{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    flex: 1;
+    margin-right: 20px;
+}
+.comment-list .item .container1 .name{
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 27px;
+}
+.comment-list .item .container1 .content{
+    font-size: 16px;
+    margin-top: 10px;
+    line-height: 24px;
+    
+}
+.comment-list .divider1{
+    margin-top: 20px;
+    height: 1px;
+    width: 100%;
+    background-color: #e8e8e8;
+}
+.comment-list .item .container2{
+    background: #f6f6f6;
+    width: 100%;
+    border-color: #d8d8d8;
+    border-width: 1px;
+    border-style: solid;
+    margin-top: 5px;
+    padding: 13px;
+    box-sizing: border-box;
+}
+.comment-list .item .container2 .name2{
+    font-size: 14px;
+    line-height: 16px;
+    display: block;
+}
+
+.comment-list .item .container2 .content2{
+    font-size: 16px;
+    margin-top: 10px;
+    line-height: 24px;
+}
+
+.comment-list .container3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.comment-list .container3 .input_comment{
+    width: 175px;
+    height: 50px;
+    border-radius: 25px;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 30px;
+}
+
+.comment-list .container3 .tip{
+    margin-top: 30px;
+    font-size: 12px;
+}
+.qrcode{
+    width: 165px;
+    height: 165px;
+    margin-bottom: 20px;
+}
+.detail-bottom-bar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 120rpx;
+    background-color: #fff;
+    font-size: 16px;
+    text-align: center;
+    align-items: center;
+}
+.detail-bottom-bar .all{
+    flex: 1;
+    height: 120rpx;
+    line-height: 120rpx;
+
+}
+.detail-bottom-bar .comment{
+    flex: 1;
+    color: #fff;
+    height: 120rpx;
+    line-height: 120rpx;
+}

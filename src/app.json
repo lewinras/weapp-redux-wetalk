@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/search/search",
+    "pages/detail/detail",
+    "pages/record/record"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#2fbd83",
+    "navigationBarTitleText": "对路小讲",
+    "navigationBarTextStyle": "light",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#ebebeb"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "tabBar": {
+    "selectedColor": "#2fbd83",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "小讲精选",
+        "iconPath": "images/xiaojiang.png",
+        "selectedIconPath": "images/xiaojiang_selected.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的小讲",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine_selected.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+
+page {
+    background: #ebebeb;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.font-normal {
+    font-family: STHeiti,Microsoft YaHei,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+}
+
+.font-thick {
+    font-family: STHeiti,Microsoft YaHei,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+}
+
+.base-green {
+    background-color: #2fbd83;
+}
+
+.font-green {
+    color: #2fbd83;
+}
+.font-deep{
+    color: #49546e;
+}
+
+.font-light{
+    color: #9ba3b4;
+}

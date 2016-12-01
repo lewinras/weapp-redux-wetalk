@@ -1,0 +1,15 @@
+<view class="container">
+    <view class="user-blank">
+        <image class="user-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"/>
+        <text class="user-nickname font-medium">{{userInfo.nickName}}</text>
+    </view>
+    <block wx:for="{{list}}" wx:key="this*">
+        <view class="user-talks-owned">
+            <text class="font-normal font-deep user-talks-title">{{item.title}}</text>
+            <view class="user-container1">
+                <image class="user-talks-avatar" src="{{item.avatar}}"/>
+                <text class="user-talks-oractor font-normal font-light">{{item.name}}</text>
+            </view>
+        </view>
+    </block>
+</view>

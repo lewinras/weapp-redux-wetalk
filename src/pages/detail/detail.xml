@@ -1,0 +1,68 @@
+<view class="container">
+<scroll-view scroll-y="true" class="container">
+    <view class = "detail-info">
+        <image src= "{{info.oractor.avatar}}?imageView2/2/w/80/h/80"/>
+        <text class="title font-normal font-deep">{{info.title}}</text>
+        <text class="name font-normal font-deep">{{info.oractor.name}}</text>
+        <view class="tags">
+            <block wx:for="{{info.oractor.tags}}" wx:key="this*">
+                <text wx:if="{{index > 0}}" class="font-light font-thick info"> | {{item}}</text>
+                <text wx:else class="font-light info"> {{item}}</text>
+            </block>
+        </view>
+        <view class="divider1"/>
+        <view class="font-deep font-thick description">{{info.oractor.description}}</view>
+        <view class="container1 font-light font-thick">
+            <view class="font-green">{{info.participant_num}}</view>人已参加
+        </view>
+        <view class="button font-thick" style="background-color:{{info.locked? '#2fbd83' : '#9ba3b4'}}">{{info.locked? '赞助'+info.product.price+'元解锁以下全部内容' : '已解锁以下全部内容'}}</view>
+    </view>
+    <view class="audio-list">
+        <block wx:for="{{questions}}" wx:key="this*">
+            <text class="title font-deep font-thick">{{item.content}}</text>
+            <view class="container1">
+                <image class="avatar" src="{{info.oractor.avatar}}?imageView2/2/w/50/h/50"/>
+                <view style="width:{{item.answers_length > 60? '200px' : '120px'}}">
+                    <view style="background-color:{{locked ? '#9ba3b4' : '#2fbd83'}}" class="audio">
+                    </view>
+                </view>
+                <text class="audio-length font-light font-thick">{{audio_lengths[index]}}</text>
+            </view>
+            <view class="divider1"/>
+        </block>
+    </view>
+    <view class="comment-list">
+        <view class="item">
+            <image class="avatar" src="{{info.oractor.avatar}}?imageView2/2/w/60/h/60"/>
+            <view class="container1">
+                <text class="name font-light font-normal">{{info.oractor.name}} (小讲师)</text>
+                <text class="content font-thick font-deep">欢迎大家给我提问，一起交流，可以直接留言或者点击留言回复我。</text>
+            </view>
+        </view>
+        <view class="divider1"/>
+        <block wx:for="{{comments}}" wx:key="this*">
+            <view class="item">
+                <image class="avatar" src="{{item.user.avatar}}?imageView2/2/w/60/h/60"/>
+                <view class="container1">
+                    <text class="name font-light font-normal">{{item.user.name}}</text>
+                    <text class="content font-thick font-deep">{{item.content}}</text>
+                    <view wx:if="{{item.parent}}" wx:key="this*" class="container2">
+                        <text class="name2 font-light font-normal">{{item.parent.user.name}}</text>
+                        <text class="content2 font-thick font-deep">{{item.parent.content}}</text>
+                    </view>
+                </view>
+            </view>
+             <view class="divider1"/>
+        </block>
+        <view class="container3">
+            <view class="input_comment font-thick base-green">我要留言</view>
+            <text class="font-thick font-deep tip">关注服务号，接收回复通知</text>
+            <image class="qrcode" src="http://cdn-img.duilu.me/b2ed6d06481d2cb6d8b79a57746991f6?imageView2/2/w/330/h/330"/>
+        </view>
+    </view>
+</scroll-view>
+    <view class="detail-bottom-bar">
+        <view class="all font-deep">全部小讲</view>
+        <view class="comment base-green">参与讨论</view>
+    </view>
+</view>

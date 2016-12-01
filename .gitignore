@@ -1,0 +1,7 @@
+#remove Jetbrains IDE file
+.idea/
+
+
+dist
+
+node_modules
