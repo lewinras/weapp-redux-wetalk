@@ -1,0 +1,31 @@
+.talks-text-record-item {
+    width: 100%;
+    box-sizing: border-box;
+
+    .divider1 {
+        height: 2rpx;
+        background-color: #ebebeb;
+    }
+
+    .title {
+        font-size: 16px;
+        display: block;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        line-height: 24px;
+        margin-bottom: 13px;
+    }
+
+    .input {
+        background-color: #f7f7f7;
+        border:1px solid #d8d8d8;
+        padding: 10px;
+        font-size: 16px;
+        height: 240rpx;
+        margin-bottom: 20px;
+        margin-left:20px;
+        margin-right: 20px;
+        width: auto;
+    }
+}

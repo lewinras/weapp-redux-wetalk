@@ -74,7 +74,7 @@ gulp.task('compile', ['clean'], next => {
         'compile:js',
         'compile:xml',
         'compile:img',
-        'compile:css',
+        // 'compile:css',
         'compile:sass'
     ], next)
 })

@@ -13,7 +13,6 @@ function fetchTalks(page = 1, refs = '', id) {
     const endpoint = `consultation/talks.json?${category_id}&page=${page}&refs=${refs}`;
     const types = [REQUEST_TALKS, RECEIVE_TALKS];
     const isForce = page === 1;
-    console.log('234324234')
     return {
         [CALL_API]: {
             types: types,

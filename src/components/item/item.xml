@@ -13,7 +13,8 @@
             <view class="bottom">
                 <image class="avatar" src="{{item.oractor.avatar}}?imageView2/2/w/60/h/60"></image>
                 <view style="background-color:{{item.product.price>0? '#2fbd83':'#4a90e2'}}" class="voice-bar">
-                    <text class="voice-text">{{item.product.price>0? '1元收听' : '限时免费'}}</text>
+                    <text class="voice-text">{{(pricedItems[index]>=0.01) ? (item.answer_type === 'voice'? pricedItems[index]+'元收听' : pricedItems[index]+'元查看') : '限时免费'}}
+                    </text>
                 </view>
 
             </view>

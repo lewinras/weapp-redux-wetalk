@@ -1,11 +1,10 @@
 //index.js
 import {bindActionCreators} from '../../libs/redux';
-import {getTalksList} from '../../utils/api'
 import {connect} from '../../libs/wechat-redux'
 import {fetchTalksIfNeeded, requestPostersIfNeeded} from '../../actions/talksActionCreators'
 import {requestBannerIfNeeded} from '../../actions/bannerActionCreators'
 import {initSystemInfo} from '../../actions/systemInfoActionCreators'
-import{makeGetBanners, makeGetPosters, makeGetTalksList, getBannerSelectedIndex} from '../../selectors/index'
+import{makeGetBanners, makeGetPosters, makeGetTalksList} from '../../selectors/index'
 const pageConfig = {
     data: {
         cookedItems: [],
@@ -19,7 +18,6 @@ const pageConfig = {
     },
 
     categorySelected(e){
-        console.log(e.target.dataset)
         this.setData({
             selectedIndex: Number(e.target.dataset.id)
         })
@@ -40,23 +38,30 @@ const pageConfig = {
     }
 }
 
+const getCookedItems = (previousItems = [], posters) =>
+    posters.reduce((items, element, index, array) => {
+        items.splice(index * 4, 0, element);
+        return items;
+    }, previousItems)
+
+const getPricedItems = (cookedItems = []) =>
+    cookedItems.map(item => item.product && item.product.price ? Number(item.product.price) : 0)
+
+
 const mapStateToData = (state, props) => {
     const windowWidth = state.systemInfo.windowWidth
     const data = makeGetTalksList()(state, props)
-    console.log(data)
     let banners = makeGetBanners()(state)
     banners.unshift({
         id: 0,
         name: '全部'
     })
     const posters = makeGetPosters()(state, props)
-    let items = data.items || []
-    const cookedItems = posters.reduce((items, element, index, array) => {
-        items.splice(index * 4, 0, element);
-        return items;
-    }, items)
+
+    const cookedItems = getCookedItems(data.items, posters)
+    const pricedItems = getPricedItems(cookedItems)
     console.log('index mapstatetodata')
-    return {windowWidth, data, banners, cookedItems}
+    return {windowWidth, data, banners, cookedItems, pricedItems}
 
 }
 
