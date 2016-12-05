@@ -1,17 +1,17 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/mine/mine",
-    "pages/search/search",
-    "pages/detail/detail",
-    "pages/record/record"
+    "containers/index/index",
+    "containers/mine/mine",
+    "containers/search/search",
+    "containers/detail/detail",
+    "containers/record/record"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#2fbd83",
     "navigationBarTitleText": "对路小讲",
     "navigationBarTextStyle": "light",
-    "enablePullDownRefresh": true,
+    "enablePullDownRefresh": false,
     "backgroundColor": "#ebebeb"
   },
   "networkTimeout": {

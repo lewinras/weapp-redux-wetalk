@@ -1,4 +1,4 @@
-<import src="../common/item/item"/>
+<import src="../../components/item/item"/>
 <view class="container">
     <scroll-view scroll-y="true" bindscrolltolower="handleLoadMore" class="search-list">
         <view class="search-bar">

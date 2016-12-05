@@ -217,7 +217,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 
 	      var state = this.store.getState();
-	      var mappedState = mapState(state, options);
+	      var mappedState = mapState(state, this.data, options);
 	      if (!this.data || (0, _shallowEqual2.default)(this.data, mappedState)) {
 	        return;
 	      }

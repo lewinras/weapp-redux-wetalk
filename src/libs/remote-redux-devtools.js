@@ -2764,7 +2764,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  for (var i = 0; i < length; ++i) {
 	    codePoint = string.charCodeAt(i)
 
-	    // is surrogate component
+	    // is surrogate components
 	    if (codePoint > 0xD7FF && codePoint < 0xE000) {
 	      // last char was a lead
 	      if (!leadSurrogate) {

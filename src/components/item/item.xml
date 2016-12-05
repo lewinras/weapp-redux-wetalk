@@ -1,0 +1,32 @@
+<template name="talks-item">
+    <block wx:for="{{cookedItems}}" wx:key="this*">
+        <image wx:if="{{item.image && item.url}}" class="banner" mode="aspectFit"
+               src="{{item.image}}?imageView2/2/w/{{windowWidth * 2}}"/>
+        <view class="talks-item" wx:else>
+            <text class="title font-normal">{{item.title}}</text>
+            <view class="oractor">
+                <text class="font-deep">{{item.oractor.name}}</text>
+                <block wx:for="{{item.oractor.tags}}" wx:key="this*">
+                    <text class="font-light"> | {{item}}</text>
+                </block>
+            </view>
+            <view class="bottom">
+                <image class="avatar" src="{{item.oractor.avatar}}?imageView2/2/w/60/h/60"></image>
+                <view style="background-color:{{item.product.price>0? '#2fbd83':'#4a90e2'}}" class="voice-bar">
+                    <text class="voice-text">{{item.product.price>0? '1元收听' : '限时免费'}}</text>
+                </view>
+
+            </view>
+        </view>
+    </block>
+    <view class="footbar">
+        <view wx:if="{{ !data.isEnd && list.length != 0 }}">
+            <image src="/images/loading.gif" mode="aspectFill"/>
+            <text>玩了命的加载中...</text>
+        </view>
+        <view wx:elif="{{list.length != 0}}">
+            <text>没有更多内容了</text>
+        </view>
+
+    </view>
+</template>

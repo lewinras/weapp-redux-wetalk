@@ -3,11 +3,12 @@ const del = require('del')
 const runSequence = require('run-sequence')
 const gulpLoadPlugins = require('gulp-load-plugins')
 const plugins = gulpLoadPlugins()
+const gulpIgnore = require('gulp-ignore')
 const env = process.env.NODE_ENV || 'development'
 const isProduction = () => env === 'production'
 
 //Clean distribution directory
-gulp.task('clean',del.bind(null, ['./dist/*']))
+gulp.task('clean', del.bind(null, ['./dist/*']))
 
 
 // Compile js source to distribution directory
@@ -20,14 +21,14 @@ gulp.task('compile:js', () => {
 // Compile json source to distribution directory
 gulp.task('compile:json', () => {
     return gulp.src(['src/**/*.json'])
-        // .pipe(plugins.jsonminify())
+    // .pipe(plugins.jsonminify())
         .pipe(gulp.dest('dist'))
 })
 
 // Compile img source to distribution directory
 gulp.task('compile:img', () => {
     return gulp.src(['img/**/*.{jpg,jpeg,png,gif}'])
-        // .pipe(plugins.imagemin())
+    // .pipe(plugins.imagemin())
         .pipe(gulp.dest('dist/images'))
 })
 
@@ -44,24 +45,24 @@ gulp.task('compile:xml', () => {
             removeScriptTypeAttributes: true,
             removeStyleLinkTypeAttributes: true
         })))
-        .pipe(plugins.rename({ extname: '.wxml' }))
+        .pipe(plugins.rename({extname: '.wxml'}))
         .pipe(gulp.dest('dist'))
 })
 
 // Compile css source to distribution directory
 gulp.task('compile:css', () => {
     return gulp.src(['src/**/*.css'])
-        .pipe(plugins.rename({ extname: '.wxss' }))
+        .pipe(plugins.rename({extname: '.wxss'}))
         .pipe(gulp.dest('dist'))
 })
 
 // Compile sass source to distribution directory
 gulp.task('compile:sass', () => {
-    return gulp.src(['src/**/*.sass'])
+    return gulp.src(['src/**/*.scss', '!src/components/**', '!src/base.scss'])
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.sass())
-        .pipe(plugins.if(isProduction, plugins.cssnano({ compatibility: '*' })))
-        .pipe(plugins.rename({ extname: '.wxss' }))
+        .pipe(plugins.if(isProduction, plugins.cssnano({compatibility: '*'})))
+        .pipe(plugins.rename({extname: '.wxss'}))
         .pipe(plugins.sourcemaps.write('.'))
         .pipe(gulp.dest('dist'))
 })
@@ -73,7 +74,8 @@ gulp.task('compile', ['clean'], next => {
         'compile:js',
         'compile:xml',
         'compile:img',
-        'compile:css'
+        'compile:css',
+        'compile:sass'
     ], next)
 })
 

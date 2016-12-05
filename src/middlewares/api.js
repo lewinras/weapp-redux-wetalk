@@ -19,10 +19,12 @@ function callApi(url, options = {}) {
 export const CALL_API = Symbol('WeTalk Api')
 
 export default store => next => action => {
+    console.log(action)
     const callAPI = action[CALL_API]
     if(typeof callAPI === 'undefined') {
         return next(action)
     }
+    console.log('hehe')
     let { endpoint, options, payload } = callAPI
     const { schema, types } = callAPI
 
@@ -61,7 +63,6 @@ export default store => next => action => {
             if(typeof suc === 'function'){
                 suc = suc(next, response)
             }
-            console.log(response)
             next(actionWith({
                 response,
                 type: suc,

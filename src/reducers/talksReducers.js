@@ -39,10 +39,17 @@ export default function talks(state = {}, action) {
             return state;
     }
 }
-function getPosters(state=[], action) {
-    switch(action.type) {
+
+function setPosters(state={}, action) {
+    return merge({}, state, {
+        posters: action.response.result.slice(0)
+    });
+}
+
+function getPosters(state = [], action) {
+    switch (action.type) {
         case RECEIVE_TALKS:
-            if(action.response.result.banners)
+            if (action.response.result.banners)
                 return uniq(state.concat(action.response.result.banners));
             else
                 return state;
@@ -50,7 +57,7 @@ function getPosters(state=[], action) {
             return state;
     }
 }
-function totalCount(state=0, action) {
+function totalCount(state = 0, action) {
     switch (action.type) {
         case RECEIVE_TALKS:
             return action.response.result.total_count;
@@ -64,7 +71,7 @@ function talksState(state = {
     page: 1,
     items: []
 }, action) {
-    return NAME=>scrollReducersCreator(NAME)(state, action);
+    return NAME => scrollReducersCreator(NAME)(state, action);
 }
 
 function talksByCategory(state = {}, action) {

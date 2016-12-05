@@ -1,4 +1,4 @@
-@import '../common/record/record';
+@import '../../components/record/record';
 .banner {
     width: 750rpx;
     height: 315rpx;

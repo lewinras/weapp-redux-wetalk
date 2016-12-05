@@ -1,4 +1,4 @@
-<import src="../common/record/record"/>
+<import src="../../components/record/record"/>
 <scroll-view scroll-y="true" class="container">
     <image class="banner" src="http://cdn-img.duilu.me/37d9f545a608430bad87fba30ad039dc.png?imageView2/2/w/1978/h/320"/>
     <view class="question">
