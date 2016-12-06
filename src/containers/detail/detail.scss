@@ -1,3 +1,4 @@
+@import '../../base';
 .detail-info {
   background-color: #fff;
   width: 100%;
@@ -59,12 +60,21 @@
   .button {
     height: 40px;
     width: 100%;
-    border-radius: 5px;
     margin-bottom: 30px;
     color: #fff;
     text-align: center;
     line-height: 40px;
     font-size: 14px;
+    view{
+      background-color: #2fbd83;
+      border-radius: 5px;
+      &.locked{
+        background-color:$base-gray;
+      }
+      &.unlocked-free{
+        background-color: $base-blue;
+      }
+    }
   }
 }
 
@@ -142,6 +152,11 @@
         margin-top: 10px;
         line-height: 24px;
       }
+      .qrcode {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+      }
     }
     .container2 {
       background: #f6f6f6;
@@ -170,30 +185,6 @@
     width: 100%;
     background-color: #e8e8e8;
   }
-  .container3 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .input_comment {
-      width: 175px;
-      height: 50px;
-      border-radius: 25px;
-      text-align: center;
-      line-height: 50px;
-      color: #fff;
-      font-size: 16px;
-      margin-top: 30px;
-    }
-    .tip {
-      margin-top: 30px;
-      font-size: 12px;
-    }
-    .qrcode {
-      width: 165px;
-      height: 165px;
-      margin-bottom: 20px;
-    }
-  }
 }
 
 .detail-bottom-bar {
@@ -215,5 +206,6 @@
     color: #fff;
     height: 120rpx;
     line-height: 120rpx;
+    background-color: $base-green;
   }
 }

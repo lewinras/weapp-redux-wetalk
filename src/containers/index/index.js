@@ -29,7 +29,6 @@ const mapStateToData = (state, props) => {
 
     const cookedItems = getCookedItems(data.items, posters);
     const pricedItems = getPricedItems(cookedItems);
-    console.log(cookedItems.length)
     console.log('index mapstatetodata');
     return {
         windowWidth,
@@ -70,12 +69,13 @@ const pageConfig = {
         wx.getSystemInfo({
             success: res => this.initSystemInfo(res)
         })
-    },
-    onReady() {
-        console.log('componentDidMount');
         this.fetchTalksIfNeeded(1, this.data.data.refs, 0);
         this.requestBannerIfNeeded();
         this.requestPostersIfNeeded()
+    },
+    onReady() {
+        console.log('ready');
+
     }
 };
 
