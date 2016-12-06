@@ -11,7 +11,7 @@
     "navigationBarBackgroundColor": "#2fbd83",
     "navigationBarTitleText": "对路小讲",
     "navigationBarTextStyle": "light",
-    "enablePullDownRefresh": true,
+    "enablePullDownRefresh": false,
     "backgroundColor": "#ebebeb"
   },
   "networkTimeout": {

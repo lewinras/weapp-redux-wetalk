@@ -44,8 +44,8 @@ export const getCurrentUserData = createSelector(
     }
 )
 
-const getTalksByCategory = (state, props) => {
-    let id = props.selectedIndex || 0;
+const getTalksByCategory = state => {
+    let id = state.talks.selectedIndex || 0;
     return getTalks(state)[id] || {};
 }
 

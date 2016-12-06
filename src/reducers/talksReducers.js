@@ -5,7 +5,8 @@ import {
     REQUEST_TALKS,
     RECEIVE_TALKS,
     SET_REFS,
-    RECEIVE_POSTERS
+    RECEIVE_POSTERS,
+    CHANGE_CATEGORY
 } from '../actions/talksActionCreators';
 import scrollReducersCreator from './scrollReducersCreator';
 
@@ -26,14 +27,12 @@ export default function talks(state = {}, action) {
         case REQUEST_TALKS:
         case RECEIVE_TALKS:
         case SET_REFS:
-            if (action.isForce) {
-                return Object.assign({}, state, {...talksByCategory(state[action.id], action)})
-            }
-            else {
-                return merge({}, state, {
-                    ...(talksByCategory(state[action.id], action))
-                })
-            }
+            return merge({}, state, {
+                selectedIndex: selectedIndex(state.selectedIndex, action),
+                ...(talksByCategory(state[action.id], action))
+            });
+        case CHANGE_CATEGORY:
+            return merge({}, state, {selectedIndex: selectedIndex(state.selectedIndex, action)});
         case RECEIVE_POSTERS:
             let talk0 = state[0] || {};
             talk0 = setPosters(talk0, action);
@@ -42,6 +41,17 @@ export default function talks(state = {}, action) {
             });
         default:
             return state;
+    }
+}
+function selectedIndex(state = 0, action) {
+    switch (action.type) {
+        case CHANGE_CATEGORY:
+        case REQUEST_TALKS:
+        case RECEIVE_TALKS:
+        case SET_REFS:
+            return action.id;
+        default:
+            return state
     }
 }
 

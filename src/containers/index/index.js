@@ -2,7 +2,7 @@
 import {bindActionCreators} from '../../libs/redux';
 import {connect} from '../../libs/wechat-redux'
 import pick from '../../libs/lodash.pick';
-import {fetchTalksIfNeeded, requestPostersIfNeeded} from '../../actions/talksActionCreators'
+import {fetchTalksIfNeeded, requestPostersIfNeeded, changeCategory} from '../../actions/talksActionCreators'
 import {requestBannerIfNeeded} from '../../actions/bannerActionCreators'
 import {initSystemInfo} from '../../actions/systemInfoActionCreators'
 import{makeGetBanners, makeGetPosters, makeGetTalksList} from '../../selectors/index'
@@ -19,14 +19,14 @@ const getPricedItems = (cookedItems = []) =>
 
 const mapStateToData = (state, props) => {
     const windowWidth = state.systemInfo.windowWidth;
-    const data = makeGetTalksList()(state, props);
+    const data = makeGetTalksList()(state);
     let banners = makeGetBanners()(state);
     banners.unshift({
         id: 0,
         name: '全部'
     });
-    const posters = makeGetPosters()(state, props);
-
+    const posters = makeGetPosters()(state);
+    const selectedIndex = state.talks.selectedIndex;
     const cookedItems = getCookedItems(data.items, posters);
     const pricedItems = getPricedItems(cookedItems);
     console.log('index mapstatetodata');
@@ -35,13 +35,20 @@ const mapStateToData = (state, props) => {
         data: pick(data, ['isFetching', 'refs', 'isEnd', 'page', 'totalCount']),
         banners,
         cookedItems,
-        pricedItems
+        pricedItems,
+        selectedIndex
     }
 
 };
 
 const mapDispatchToPage = dispatch =>
-    bindActionCreators({fetchTalksIfNeeded, requestBannerIfNeeded, requestPostersIfNeeded, initSystemInfo}, dispatch);
+    bindActionCreators({
+        fetchTalksIfNeeded,
+        requestBannerIfNeeded,
+        requestPostersIfNeeded,
+        initSystemInfo,
+        changeCategory
+    }, dispatch);
 
 const pageConfig = {
     data: {
@@ -54,15 +61,8 @@ const pageConfig = {
     },
 
     categorySelected(e){
-        this.setData({
-            selectedIndex: Number(e.target.dataset.id)
-        });
-        this.onPullDownRefresh();
+        this.changeCategory(e.target.dataset.id)
 
-    },
-    onPullDownRefresh(){
-        this.fetchTalksIfNeeded(1, this.data.refs, this.data.selectedIndex);
-        wx.stopPullDownRefresh();
     },
     onLoad(){
         console.log('onstart');
