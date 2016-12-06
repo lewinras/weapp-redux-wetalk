@@ -1,6 +1,7 @@
 import {Promise} from '../libs/promise'
 import { normalize } from '../libs/normalizr.min';
-const API_ROOT = 'http://www.duilu.me/';
+// const API_ROOT = 'http://www.duilu.me/';
+const API_ROOT = 'http://localhost:3000/';
 function callApi(url, options = {}) {
     const fullUrl = (url.indexOf(API_ROOT === -1) ? API_ROOT + url : url)
     return new Promise((resolve, reject) => {
@@ -16,23 +17,21 @@ function callApi(url, options = {}) {
     })
 }
 
-export const CALL_API = Symbol('WeTalk Api')
+export const CALL_API = Symbol('WeTalk Api');
 
 export default store => next => action => {
-    console.log(action)
-    const callAPI = action[CALL_API]
+    const callAPI = action[CALL_API];
     if(typeof callAPI === 'undefined') {
         return next(action)
     }
-    console.log('hehe')
-    let { endpoint, options, payload } = callAPI
-    const { schema, types } = callAPI
+    let { endpoint, options, payload } = callAPI;
+    const { schema, types } = callAPI;
 
-    payload = payload || {}
+    payload = payload || {};
 
     if (typeof endpoint === 'function') {
         endpoint = endpoint(store.getState());
-        l  }
+    }
 
     if (typeof endpoint !== 'string') {
         throw new Error('Specify a string endpoint URL.');
@@ -48,13 +47,13 @@ export default store => next => action => {
     }
 
     function actionWith(data) {
-        const finalAction = Object.assign({}, action, data)
+        const finalAction = Object.assign({}, action, data);
         delete finalAction[CALL_API]
         return finalAction
     }
 
-    const [ requestType, successType, failureType ] = types
-    next(actionWith({ type: requestType, ...payload}))
+    const [ requestType, successType, failureType ] = types;
+    next(actionWith({ type: requestType, ...payload}));
 
     return callApi(endpoint, options)
         .then(res => normalize(res.data, schema))
@@ -71,7 +70,7 @@ export default store => next => action => {
             }))
         })
         .catch(error => {
-            console.log('error')
+            console.log('error');
             console.error(error)
         })
 

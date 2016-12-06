@@ -2,7 +2,7 @@
     <block wx:for="{{cookedItems}}" wx:key="this*">
         <image wx:if="{{item.image && item.url}}" class="banner" mode="aspectFit"
                src="{{item.image}}?imageView2/2/w/{{windowWidth * 2}}"/>
-        <view class="talks-item" wx:else>
+        <navigator url="../../containers/detail/detail?id={{item.id}}" class="talks-item" wx:else>
             <text class="title font-normal">{{item.title}}</text>
             <view class="oractor">
                 <text class="font-deep">{{item.oractor.name}}</text>
@@ -12,13 +12,12 @@
             </view>
             <view class="bottom">
                 <image class="avatar" src="{{item.oractor.avatar}}?imageView2/2/w/60/h/60"></image>
-                <view style="background-color:{{item.product.price>0? '#2fbd83':'#4a90e2'}}" class="voice-bar">
+                <view style="background-color:{{item.product.price>0? '#2fbd83':'#4990e2'}}" class="voice-bar">
                     <text class="voice-text">{{(pricedItems[index]>=0.01) ? (item.answer_type === 'voice'? pricedItems[index]+'元收听' : pricedItems[index]+'元查看') : '限时免费'}}
                     </text>
                 </view>
-
             </view>
-        </view>
+        </navigator>
     </block>
     <view class="footbar">
         <view wx:if="{{ !data.isEnd && list.length != 0 }}">

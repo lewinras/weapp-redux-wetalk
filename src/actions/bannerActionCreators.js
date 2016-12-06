@@ -16,8 +16,7 @@ function requestBanner() {
 
 function shouldRequestBanner(state) {
     const {banners} = state;
-
-    return !banners.isFetchingBanner || banners.banners;
+    return !banners.isFetchingBanner;
 }
 
 export function requestBannerIfNeeded() {
@@ -29,17 +28,4 @@ export function requestBannerIfNeeded() {
 }
 
 
-export const CHANGE_CATEGORY = "REQUEST_GROUP_SUBJECT";
 
-function requestGroupSubject(id) {
-    return {
-        type: CHANGE_CATEGORY,
-        id: id,
-    }
-}
-
-export function changeIndexCategory(id) {
-    return (dispatch, getState) => {
-        return dispatch(requestGroupSubject(id));
-    }
-}

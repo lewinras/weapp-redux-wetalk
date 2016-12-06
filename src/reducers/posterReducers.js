@@ -24,7 +24,7 @@ function isFetching(state = false, action) {
 function getPosters(state = [], action) {
     switch (action.type) {
         case RECEIVE_POSTERS:
-            return action.response.result.map(item => item);
+            return action.response.result;
         default:
             return state;
     }

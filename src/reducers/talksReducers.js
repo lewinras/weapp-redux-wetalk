@@ -26,9 +26,14 @@ export default function talks(state = {}, action) {
         case REQUEST_TALKS:
         case RECEIVE_TALKS:
         case SET_REFS:
-            return merge({}, state, {
-                ...(talksByCategory(state[action.id], action))
-            });
+            if (action.isForce) {
+                return Object.assign({}, state, {...talksByCategory(state[action.id], action)})
+            }
+            else {
+                return merge({}, state, {
+                    ...(talksByCategory(state[action.id], action))
+                })
+            }
         case RECEIVE_POSTERS:
             let talk0 = state[0] || {};
             talk0 = setPosters(talk0, action);
@@ -40,7 +45,7 @@ export default function talks(state = {}, action) {
     }
 }
 
-function setPosters(state={}, action) {
+function setPosters(state = {}, action) {
     return merge({}, state, {
         posters: action.response.result.slice(0)
     });

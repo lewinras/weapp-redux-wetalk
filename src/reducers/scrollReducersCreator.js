@@ -45,6 +45,5 @@ export default function scrollReducersCreator(type, maxCount = 20) {
 function isEnd(items, maxCount) {
     if (!items) return true;
     if (items.length === 0) return true;
-    if (items.length < maxCount) return true;
-    return false;
+    return items.length < maxCount
 }

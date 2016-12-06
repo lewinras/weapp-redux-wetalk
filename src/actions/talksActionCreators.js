@@ -2,12 +2,13 @@
  * Created by luqingchuan on 2016/12/1.
  */
 export const REQUEST_TALKS = 'REQUEST_TALKS';
+export const REQUEST_TALKS_INITIAL = 'REQUEST_TALKS_INITIAL';
 export const RECEIVE_TALKS = 'RECEIVE_TALKS';
 export const SET_REFS = 'SET_REFS';
 import {CALL_API} from '../middlewares/api';
 import Schemas from '../schemas/schema';
 
-function fetchTalks(page = 1, refs = '', id) {
+function fetchTalks(page = 1,refs = '', id) {
     refs = encodeURIComponent(refs);
     let category_id = id === 0 ? '' : 'category_id=' + id;
     const endpoint = `consultation/talks.json?${category_id}&page=${page}&refs=${refs}`;
@@ -26,19 +27,19 @@ function fetchTalks(page = 1, refs = '', id) {
     };
 }
 
-export function fetchTalksIfNeeded(page = 1, isInitial = false, refs = '', id = 0) {
+export function fetchTalksIfNeeded(page = 1,refs = '', id = 0) {
     return (dispatch, getState) => {
-        if (shouldFetchTalks(getState(), isInitial, refs, id))
+        if (shouldFetchTalks(getState(), refs, id))
             return dispatch(fetchTalks(page, refs, id));
     };
 }
 
-function shouldFetchTalks(state, isInitial, refs = '', id) {
-    // const currentState = state.talks[id] || {};
-    // const {isFetching, isEnd, items, totalCount} = currentState;
-    // if (isFetching || isEnd) {
-    //     return false;
-    // }
+function shouldFetchTalks(state, refs = '', id) {
+    const currentState = state.talks[id] || {};
+    const {isFetching, isEnd, items, totalCount} = currentState;
+    if (isFetching) {
+        return false;
+    }
     return true;
 }
 

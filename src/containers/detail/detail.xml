@@ -1,21 +1,23 @@
 <view class="container">
 <scroll-view scroll-y="true" class="container">
     <view class = "detail-info">
-        <image src= "{{info.oractor.avatar}}?imageView2/2/w/80/h/80"/>
-        <text class="title font-normal font-deep">{{info.title}}</text>
-        <text class="name font-normal font-deep">{{info.oractor.name}}</text>
-        <view class="tags">
-            <block wx:for="{{info.oractor.tags}}" wx:key="this*">
+        <image src= "{{oractor.avatar}}?imageView2/2/w/80/h/80"/>
+        <text class="title font-normal font-deep">{{title}}</text>
+        <text class="name font-normal font-deep">{{oractor.name}}</text>
+        <view wx:if="{{oractor.tags.length}}" class="tags">
+            <block wx:for="{{oractor.tags}}" wx:key="this*">
                 <text wx:if="{{index > 0}}" class="font-light font-thick info"> | {{item}}</text>
                 <text wx:else class="font-light info"> {{item}}</text>
             </block>
+            <view class="container2">
+                <view class="divider1"/>
+            </view>
         </view>
-        <view class="divider1"/>
-        <view class="font-deep font-thick description">{{info.oractor.description}}</view>
+        <view class="font-deep font-thick description">{{oractor.description}}</view>
         <view class="container1 font-light font-thick">
-            <view class="font-green">{{info.participant_num}}</view>人已参加
+            <view class="font-green">{{participant_num}}</view>人已参加
         </view>
-        <view class="button font-thick" style="background-color:{{info.locked? '#2fbd83' : '#9ba3b4'}}">{{info.locked? '赞助'+info.product.price+'元解锁以下全部内容' : '已解锁以下全部内容'}}</view>
+        <view class="button font-thick" style="background-color:{{locked? '#2fbd83' : '#9ba3b4'}}">{{locked? '赞助'+product.price+'元解锁以下全部内容' : '已解锁以下全部内容'}}</view>
     </view>
     <view class="audio-list">
         <block wx:for="{{questions}}" wx:key="this*">

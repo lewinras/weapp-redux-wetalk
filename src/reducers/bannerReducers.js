@@ -1,18 +1,10 @@
-import merge from '../libs/lodash.merge';
-import pick from '../libs/lodash.pick';
 import {
     REQUEST_BANNER_CATEGORY,
     RECEIVE_BANNER_CATEGORY,
-    CHANGE_CATEGORY,
 } from '../actions/bannerActionCreators';
 
-import scrollReducersCreator from './scrollReducersCreator';
 
-export default function banners(state = {
-    isFetchingBanner: false,
-    banners: [],
-    selectedIndex: 0,
-}, action) {
+export default function banners(state = {}, action) {
     return {
         isFetchingBanner: isFetchingBanner(state.isFetchingBanner, action),
         banners: returnBanners(state.banners, action),
@@ -20,7 +12,7 @@ export default function banners(state = {
     }
 }
 
-function isFetchingBanner(state, action) {
+function isFetchingBanner(state = false, action) {
     switch (action.type) {
         case REQUEST_BANNER_CATEGORY:
             return true;
@@ -29,19 +21,16 @@ function isFetchingBanner(state, action) {
         default:
             return state;
     }
-    ;
 }
 
-function selectedIndex(state, action) {
+function selectedIndex(state = 0, action) {
     switch (action.type) {
-        case CHANGE_CATEGORY:
-            return action.id;
         default:
             return state;
     }
 }
 
-function returnBanners(state, action) {
+function returnBanners(state = [], action) {
     switch (action.type) {
         case RECEIVE_BANNER_CATEGORY:
             return action.response.result;

@@ -30,13 +30,19 @@
       font-size: 14px;
       margin-top: 6px;
     }
+    .container2{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .divider1 {
+      width: 12px;
+      height: 2px;
+      background-color: #2fbd83;
+      margin-top: 24px;
+    }
   }
-  .divider1 {
-    width: 12px;
-    height: 2px;
-    background-color: #2fbd83;
-    margin-top: 24px;
-  }
+
   .description {
     margin-top: 17px;
     font-size: 16px;

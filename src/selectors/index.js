@@ -15,8 +15,8 @@ const getUser = (state, props) => state.entities.users[props.userId || props.id]
 const getOractor = (state, props) => state.entities.oractors[props.id];
 export const getGlobal = (state) => state.global;
 const getVisitedTalks = (state) => state.visitedTalks;
-const getVisitedTalk = (state, props) => state.visitedTalks[props.params.talkId || props.params.id];
-const getTalk = (state, props) => state.entities.talks[props.params.talkId || props.params.id];
+const getVisitedTalk = (state, props) => state.visitedTalks[props.talkId || props.id];
+const getTalk = (state, props) => state.entities.talks[props.talkId || props.id];
 const getProducts = (state) => state.entities.products;
 const getActivity = (state, props) => state.entities.activities[props.params.activityId || props.params.id];
 const getVisitedActivities = (state, props) => state.visitedActivities[props];
