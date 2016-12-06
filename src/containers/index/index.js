@@ -6,39 +6,6 @@ import {fetchTalksIfNeeded, requestPostersIfNeeded} from '../../actions/talksAct
 import {requestBannerIfNeeded} from '../../actions/bannerActionCreators'
 import {initSystemInfo} from '../../actions/systemInfoActionCreators'
 import{makeGetBanners, makeGetPosters, makeGetTalksList} from '../../selectors/index'
-const pageConfig = {
-    data: {
-        selectedIndex: 0
-    },
-
-    handleLoadMore () {
-        if (this.data.data.isEnd || this.data.data.isFetching) return;
-        this.fetchTalksIfNeeded(this.data.data.page, this.data.data.refs, this.data.selectedIndex)
-    },
-
-    categorySelected(e){
-        this.setData({
-            selectedIndex: Number(e.target.dataset.id)
-        });
-        this.fetchTalksIfNeeded(1, this.data.refs, this.data.selectedIndex)
-
-    },
-    onLoad(){
-        const itemstate = {a:'dfdf',items:[1,2,3,4]}
-        const itemitem = Object.assign({}, itemstate,{items:[5,6,7,8]})
-        console.log(itemitem)
-        console.log('onstart');
-        wx.getSystemInfo({
-            success: res => this.initSystemInfo(res)
-        })
-    },
-    onReady() {
-        console.log('componentDidMount');
-        this.fetchTalksIfNeeded(1, this.data.data.refs, 0);
-        this.requestBannerIfNeeded();
-        this.requestPostersIfNeeded()
-    }
-};
 
 const getCookedItems = (previousItems = [], posters) =>
     posters.reduce((items, element, index) => {
@@ -76,6 +43,41 @@ const mapStateToData = (state, props) => {
 
 const mapDispatchToPage = dispatch =>
     bindActionCreators({fetchTalksIfNeeded, requestBannerIfNeeded, requestPostersIfNeeded, initSystemInfo}, dispatch);
+
+const pageConfig = {
+    data: {
+        selectedIndex: 0
+    },
+
+    handleLoadMore () {
+        if (this.data.data.isEnd || this.data.data.isFetching) return;
+        this.fetchTalksIfNeeded(this.data.data.page, this.data.data.refs, this.data.selectedIndex)
+    },
+
+    categorySelected(e){
+        this.setData({
+            selectedIndex: Number(e.target.dataset.id)
+        });
+        this.onPullDownRefresh();
+
+    },
+    onPullDownRefresh(){
+        this.fetchTalksIfNeeded(1, this.data.refs, this.data.selectedIndex);
+        wx.stopPullDownRefresh();
+    },
+    onLoad(){
+        console.log('onstart');
+        wx.getSystemInfo({
+            success: res => this.initSystemInfo(res)
+        })
+    },
+    onReady() {
+        console.log('componentDidMount');
+        this.fetchTalksIfNeeded(1, this.data.data.refs, 0);
+        this.requestBannerIfNeeded();
+        this.requestPostersIfNeeded()
+    }
+};
 
 const nextPageConfig = connect(mapStateToData, mapDispatchToPage)(pageConfig);
 

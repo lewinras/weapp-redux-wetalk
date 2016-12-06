@@ -12,7 +12,11 @@ import visitedTalks from './visitedTalksReducers';
 
 function entities(state = defaultEntities, action) {
     if (action.response && action.response.entities) {
-        return merge({}, state, action.response.entities);
+        if (action.isForce) {
+            return Object.assign({}, state, action.response.entities)
+        } else {
+            return merge({}, state, action.response.entities);
+        }
     }
     return state;
 }
