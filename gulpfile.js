@@ -1,38 +1,32 @@
-const gulp = require('gulp')
-const del = require('del')
-const runSequence = require('run-sequence')
-const gulpLoadPlugins = require('gulp-load-plugins')
-const plugins = gulpLoadPlugins()
-const gulpIgnore = require('gulp-ignore')
-const env = process.env.NODE_ENV || 'development'
-const isProduction = () => env === 'production'
+const gulp = require('gulp');
+const del = require('del');
+const runSequence = require('run-sequence');
+const gulpLoadPlugins = require('gulp-load-plugins');
+const plugins = gulpLoadPlugins();
+const env = process.env.NODE_ENV || 'development';
+const isProduction = () => env === 'production';
 
-//Clean distribution directory
-gulp.task('clean', del.bind(null, ['./dist/*']))
+gulp.task('clean', del.bind(null, ['./dist/*']));
 
 
-// Compile js source to distribution directory
 gulp.task('compile:js', () => {
-    return gulp.src(['src/**/*.js'])
+    return gulp.src(['src/**/*.js', '!src/configureStore.*.js', '!src/libs/redux-logger.js'])
         .pipe(plugins.babel())
         .pipe(plugins.if(isProduction, plugins.uglify()))
         .pipe(gulp.dest('dist'))
-})
-// Compile json source to distribution directory
+});
 gulp.task('compile:json', () => {
     return gulp.src(['src/**/*.json'])
     // .pipe(plugins.jsonminify())
         .pipe(gulp.dest('dist'))
-})
+});
 
-// Compile img source to distribution directory
 gulp.task('compile:img', () => {
     return gulp.src(['img/**/*.{jpg,jpeg,png,gif}'])
     // .pipe(plugins.imagemin())
         .pipe(gulp.dest('dist/images'))
-})
+});
 
-// Compile xml source to distribution directory
 gulp.task('compile:xml', () => {
     return gulp.src(['src/**/*.xml'])
         .pipe(plugins.if(isProduction, plugins.htmlmin({
@@ -47,14 +41,13 @@ gulp.task('compile:xml', () => {
         })))
         .pipe(plugins.rename({extname: '.wxml'}))
         .pipe(gulp.dest('dist'))
-})
+});
 
-// Compile css source to distribution directory
 gulp.task('compile:css', () => {
     return gulp.src(['src/**/*.css'])
         .pipe(plugins.rename({extname: '.wxss'}))
         .pipe(gulp.dest('dist'))
-})
+});
 
 // Compile sass source to distribution directory
 gulp.task('compile:sass', () => {
@@ -65,9 +58,8 @@ gulp.task('compile:sass', () => {
         .pipe(plugins.rename({extname: '.wxss'}))
         .pipe(plugins.sourcemaps.write('.'))
         .pipe(gulp.dest('dist'))
-})
+});
 
-//Compile all
 gulp.task('compile', ['clean'], next => {
     runSequence([
         'compile:json',
@@ -77,8 +69,33 @@ gulp.task('compile', ['clean'], next => {
         // 'compile:css',
         'compile:sass'
     ], next)
-})
+});
 
+gulp.task('dev:configureStore', () => {
+    return gulp.src(['src/configureStore.dev.js'])
+        .pipe(plugins.babel())
+        .pipe(plugins.rename({basename: 'configureStore'}))
+        .pipe(gulp.dest('dist'))
+});
+gulp.task('dev:libs', () => {
+    return gulp.src(['src/libs/redux-logger.js'])
+        .pipe(plugins.babel())
+        .pipe(gulp.dest('dist/libs'))
+});
+gulp.task('development', () => {
+    runSequence([
+            'dev:configureStore',
+            'dev:libs'
+        ]
+    )
+});
+gulp.task('configure-pro', () => {
+    return gulp.src(['src/configureStore.pro.js'])
+        .pipe(plugins.babel())
+        .pipe(plugins.uglify())
+        .pipe(plugins.rename({basename: 'configureStore'}))
+        .pipe(gulp.dest('dist'))
+});
+gulp.task('default', ['compile', 'development']);
 
-//default tasks
-gulp.task('default', ['compile'])
+gulp.task('deploy', ['compile', 'configure-pro']);

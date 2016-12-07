@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env NODE_ENV=production gulp",
-    "deploy": "gulp"
+    "develop": "gulp",
+    "deploy": "cross-env NODE_ENV = production gulp deploy"
   },
   "author": "",
   "license": "ISC",
@@ -20,7 +20,6 @@
     "gulp-cssnano": "^2.1.2",
     "gulp-htmlmin": "^3.0.0",
     "gulp-if": "^2.0.1",
-    "gulp-ignore": "^2.0.2",
     "gulp-imagemin": "^3.0.3",
     "gulp-jsonminify": "^1.0.0",
     "gulp-load-plugins": "^1.3.0",

@@ -3,10 +3,10 @@ import {applyMiddleware, createStore, compose} from './libs/redux'
 import reducers from './reducers/index'
 import apiMiddleware from './middlewares/api'
 import thunk from './libs/redux-thunk'
-import createLogger from './libs/redux-logger';
-//development
 import merge from './libs/lodash.merge'
 import {defaultEntities} from './schemas/schema'
+import createLogger from './libs/redux-logger'
+
 const loggerMiddleware = createLogger();
 
 const middleware = [thunk, apiMiddleware, loggerMiddleware]

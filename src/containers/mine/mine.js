@@ -11,10 +11,8 @@ import {fetchConsultant} from'../../actions/consultantActionCreators'
 import {getCurrentUser} from '../../selectors/index.js';
 
 const pageConfig = {
-    data: {
-    },
+    data: {},
     onLoad(){
-        console.log('mine onload')
         // this.requestSubscribedIfNeeded()//wechat need
         this.fetchConsultant(this.data.userInfo.id)
         this.fetchProfileIfNeeded();
@@ -23,21 +21,16 @@ const pageConfig = {
 
     },
     handleLoadMore(){
-        if(!this.data.glances.isEnd){
-            this.fetchProfileHistoryIfNeeded(this.data.glances.page,'glances',false)
+        if (!this.data.glances.isEnd) {
+            this.fetchProfileHistoryIfNeeded(this.data.glances.page, 'glances', false)
         }
     }
 };
 const mapStateToData = (state, props) => {
     const currentUser = getCurrentUser(state)
-    console.log('mine mapstatetoprops')
     const path = 'glances'
-
-    const {
-        entities: {consultations, users},
-    } = state;
+    const {entities: {consultations, users},} = state;
     const profile = state.profile || {};
-
     let cooked = pick(profile, [path]) || {[path]: {}};
     const items = cooked[path]['items'] || [];
     const cookedItems = items.map(id => (
@@ -50,9 +43,7 @@ const mapStateToData = (state, props) => {
     ));
 
     cooked = merge({}, cooked, {
-        [path]: {
-            items: cookedItems
-        }
+        [path]: {items: cookedItems}
     });
 
     return {userInfo: pick(currentUser, ['isFetching', 'name', 'avatar', 'id']), ...cooked}
