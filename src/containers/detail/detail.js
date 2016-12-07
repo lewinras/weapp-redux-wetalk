@@ -29,7 +29,6 @@ const pageConfig = {
         }
     },
     onLoad(options){
-        console.log('onload')
         if (options.id) {
             this.setData({id: Number(options.id)})
         }
@@ -42,7 +41,6 @@ const pageConfig = {
     }
 };
 const mapStateToData = (state, props) => {
-    console.log('detail mapstatetoprops')
     const getVisitedTalk = makeGetVisitedTalk();
     const getTalkQuestions = makeGetTalkQuestions();
     const getTalkComments = makeGetTalkComments();

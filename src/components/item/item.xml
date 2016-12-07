@@ -20,11 +20,11 @@
         </navigator>
     </block>
     <view class="footbar">
-        <view wx:if="{{ !data.isEnd && list.length != 0 }}">
+        <view wx:if="{{ !talks.isEnd && cookedItems.length != 0 }}">
             <image src="/images/loading.gif" mode="aspectFill"/>
             <text>玩了命的加载中...</text>
         </view>
-        <view wx:elif="{{list.length != 0}}">
+        <view wx:elif="{{cookedItems.length != 0}}">
             <text>没有更多内容了</text>
         </view>
 

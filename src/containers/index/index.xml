@@ -14,9 +14,9 @@
     </navigator>
 </view>
 <scroll-view scroll-y="true" class="talks-scrollview" bindscrolltolower="handleLoadMore">
-    <template is="talks-item" data="{{cookedItems, data, windowWidth}}"/>
+    <template is="talks-item" data="{{cookedItems, talks, windowWidth}}"/>
 </scroll-view>
-<loading hidden="{{!data.isFetching}}">
+<loading hidden="{{!talks.isFetching}}">
     加载中...
 </loading>
 </view>

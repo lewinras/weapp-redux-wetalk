@@ -8,36 +8,34 @@ import {requestBannerIfNeeded} from '../../actions/bannerActionCreators'
 import {initSystemInfo} from '../../actions/systemInfoActionCreators'
 import{makeGetBanners, makeGetPosters, makeGetTalksList} from '../../selectors/index'
 
-const getCookedItems = (previousItems = [], posters) =>
+const makeGetCookedItems = (previousItems = [], posters) =>
     posters.reduce((items, element, index) => {
-        items.splice(index * 4, 0, element);
-        return items;
-    }, previousItems);
+            items.splice(index * 4, 0, element);
+            return items;
+        },
+        previousItems)
+        .map(item => {
+            if (item.product) {
+                item.product.price = item.product && item.product.price ? Number(item.product.price) : 0;
+            }
+            return item
+        });
 
 
 const mapStateToData = (state, props) => {
     const data = makeGetTalksList()(state);
+    const posters = makeGetPosters()(state);
     let banners = makeGetBanners()(state);
     banners.unshift({
         id: 0,
         name: '全部'
     });
-    const posters = makeGetPosters()(state);
-    const cookedItems = getCookedItems(data.items, posters);
     console.log('index mapstatetodata');
     return {
         windowWidth: state.systemInfo.windowWidth,
-        data: pick(data, ['isFetching', 'refs', 'isEnd', 'page', 'totalCount']),
+        talks: {...pick(data, ['isFetching', 'refs', 'isEnd', 'page', 'totalCount'])},
         banners,
-        cookedItems: merge(
-            {},
-            cookedItems,
-            cookedItems.map(item => {
-                if (item.product) {
-                    item.product.price = item.product && item.product.price ? Number(item.product.price) : 0;
-                }
-                return item
-            })),
+        cookedItems: makeGetCookedItems(data.items, posters),
         selectedIndex: state.talks.selectedIndex
     }
 
@@ -54,12 +52,11 @@ const mapDispatchToPage = dispatch =>
 
 const pageConfig = {
     data: {
-        selectedIndex: 0
     },
 
     handleLoadMore () {
-        if (this.data.data.isEnd || this.data.data.isFetching) return;
-        this.fetchTalksIfNeeded(this.data.data.page, this.data.data.refs, this.data.selectedIndex)
+        if (this.data.talks.isEnd || this.data.talks.isFetching) return;
+        this.fetchTalksIfNeeded(this.data.talks.page, this.data.talks.refs, this.data.selectedIndex)
     },
 
     categorySelected(e){
@@ -70,7 +67,7 @@ const pageConfig = {
         wx.getSystemInfo({
             success: res => this.initSystemInfo(res)
         })
-        this.fetchTalksIfNeeded(1, this.data.data.refs, 0);
+        this.fetchTalksIfNeeded(1, this.data.talks.refs, 0);
         this.requestBannerIfNeeded();
         this.requestPostersIfNeeded()
     },
