@@ -9,12 +9,12 @@
             {{item.name}}
         </view>
     </view>
-    <navigator url="../record/record">
+    <navigator url="../search/search">
         <image class="icon" src="../../images/search.png"/>
     </navigator>
 </view>
 <scroll-view scroll-y="true" class="talks-scrollview" bindscrolltolower="handleLoadMore">
-    <template is="talks-item" data="{{cookedItems, talks, windowWidth}}"/>
+    <template is="talks-item" data="{{items, isEnd: talks.isEnd, windowWidth}}"/>
 </scroll-view>
 <!--<loading hidden="{{!talks.isFetching}}">-->
     <!--加载中...-->

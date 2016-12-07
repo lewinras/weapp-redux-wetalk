@@ -35,7 +35,7 @@ const mapStateToData = (state, props) => {
         windowWidth: state.systemInfo.windowWidth,
         talks: {...pick(data, ['isFetching', 'refs', 'isEnd', 'page', 'totalCount'])},
         banners,
-        cookedItems: makeGetCookedItems(data.items, posters),
+        items: makeGetCookedItems(data.items, posters),
         selectedIndex: state.banners.selectedIndex
     }
 
@@ -73,6 +73,4 @@ const pageConfig = {
     },
 };
 
-const nextPageConfig = connect(mapStateToData, mapDispatchToPage)(pageConfig);
-
-Page(nextPageConfig);
+Page(connect(mapStateToData, mapDispatchToPage)(pageConfig));

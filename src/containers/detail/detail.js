@@ -70,5 +70,4 @@ const mapStateToData = (state, props) => {
 };
 const mapDispatchToPage = dispatch =>
     bindActionCreators({fetchTalk, fetchQuestionsIfNeeded, fetchCommentsIfNeeded}, dispatch);
-const nextPageConfig = connect(mapStateToData, mapDispatchToPage)(pageConfig);
-Page(nextPageConfig);
+Page(connect(mapStateToData, mapDispatchToPage)(pageConfig));

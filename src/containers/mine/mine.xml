@@ -4,7 +4,7 @@
         <text class="name">{{userInfo.name}}</text>
     </view>
     <block wx:for="{{glances.items}}" wx:key="this*">
-        <view class="talks-owned">
+        <view class="talks-glanced" data-id="{{item.id}}" data-completed="{{item.completed}}" catchtap="clickItem">
             <text class="talks-title">{{item.title}}</text>
             <view class="container1">
                 <image class="talks-avatar" src="{{item.avatar}}"/>

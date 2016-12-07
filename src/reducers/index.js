@@ -8,7 +8,7 @@ import profile from './profileReducers';
 import posters from './posterReducers.js';
 import systemInfo from './systemInfoReducers'
 import visitedTalks from './visitedTalksReducers';
-
+import search from './searchReducers';
 
 function entities(state = defaultEntities, action) {
     if (action.response && action.response.entities) {
@@ -25,6 +25,7 @@ export default combineReducers({
     profile,
     posters,
     systemInfo,
-    visitedTalks
+    visitedTalks,
+    search,
 })
 

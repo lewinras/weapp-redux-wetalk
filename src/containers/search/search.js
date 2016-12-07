@@ -1,55 +1,33 @@
-import {getSearchList} from '../../utils/api.js'
-Page({
+import {bindActionCreators} from '../../libs/redux';
+import {connect} from '../../libs/wechat-redux';
+import {search, clearSearch} from '../../actions/searchActionCreators'
+import { makeGetSearches } from  '../../selectors/index.js';
+
+const mapStateToData = (state, props) => {
+    return {...makeGetSearches()(state)}
+};
+const mapDispatchToPage = dispatch => bindActionCreators({search, clearSearch}, dispatch);
+
+const pageConfig = {
     data: {
-        list: [],
-        hasMore: true,
-        page: 1,
         question: ''
-    },
-    handleLoadMore () {
-            if (!this.data.hasMore) return;
-            this.searchData()
     },
     bindInput (e) {
         if (!e.detail.value) return;
-       this.setData({
+        this.setData({
             question: e.detail.value
         })
     },
     searchQuestion(){
-        this.onPullDownRefresh();
+        this.search(this.data.question);
     },
-    onPullDownRefresh() {
-        this.setData({
-            page: 1,
-            list: [],
-            hasMore: true
-        })
-        this.searchData();
-    },
-    searchData() {
-        this.setData({
-            loading: true
-        })
-        const params = {page: this.data.page, q: this.data.question}
-        getSearchList(params)
-            .then(data => {
-                if (data.talks && data.talks.length) {
-                    this.setData({list: this.data.list.concat(data.talks), page: this.data.page + 1})
-                } else {
-                    this.setData({hasMore: false})
-                }
-            })
-            .catch(e => {
-                console.error(e)
-            })
-            .then(
-                setTimeout(() => {
-                    this.setData({loading: false})
-                    wx.stopPullDownRefresh()
-                }, 300))
+    handleLoadMore () {
+        if (this.data.isEnd || this.data.isFetching) return;
+        this.search(this.data.text, this.data.page);
     },
     onLoad(){
-        
+       this.clearSearch();
     }
-})
+};
+
+Page(connect(mapStateToData, mapDispatchToPage)(pageConfig));

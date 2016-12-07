@@ -1,5 +1,5 @@
 <template name="talks-item">
-    <block wx:for="{{cookedItems}}" wx:key="this*">
+    <block wx:for="{{items}}" wx:key="this*">
         <image wx:if="{{item.image && item.url}}" class="banner" mode="aspectFit"
                src="{{item.image}}?imageView2/2/w/{{windowWidth * 2}}"/>
         <navigator url="../../containers/detail/detail?id={{item.id}}" class="talks-item" wx:else>
@@ -20,11 +20,11 @@
         </navigator>
     </block>
     <view class="footbar">
-        <view wx:if="{{ !talks.isEnd && cookedItems.length != 0 }}">
+        <view wx:if="{{ !isEnd && items.length != 0 }}">
             <image src="/images/loading.gif" mode="aspectFill"/>
             <text>玩了命的加载中...</text>
         </view>
-        <view wx:elif="{{cookedItems.length != 0}}">
+        <view wx:elif="{{items.length != 0}}">
             <text>没有更多内容了</text>
         </view>
 

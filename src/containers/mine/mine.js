@@ -24,6 +24,13 @@ const pageConfig = {
         if (!this.data.glances.isEnd) {
             this.fetchProfileHistoryIfNeeded(this.data.glances.page, 'glances', false)
         }
+    },
+    clickItem(e){
+        console.log(e)
+       if( e.currentTarget.dataset.completed)
+           wx.navigateTo({
+               url: `../detail/detail?id=${e.currentTarget.dataset.id}`
+           })
     }
 };
 const mapStateToData = (state, props) => {
@@ -55,6 +62,5 @@ const mapDispatchToPage = dispatch =>
         fetchProfileIfNeeded,
         fetchProfileHistoryIfNeeded
     }, dispatch);
-const nextPageConfig = connect(mapStateToData, mapDispatchToPage)(pageConfig);
-Page(nextPageConfig);
+Page(connect(mapStateToData, mapDispatchToPage)(pageConfig));
 
