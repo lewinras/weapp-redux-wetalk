@@ -16,7 +16,7 @@ const makeGetCookedItems = (previousItems = [], posters) =>
         previousItems)
         .map(item => {
             if (item.product) {
-                item.product.price = item.product && item.product.price ? Number(item.product.price) : 0;
+                item.product.price = item.product.price ? Number(item.product.price) : 0;
             }
             return item
         });

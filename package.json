@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "develop": "gulp",
-    "deploy": "cross-env NODE_ENV = production gulp deploy"
+    "deploy": "cross-env NODE_ENV=production gulp deploy"
   },
   "author": "",
   "license": "ISC",

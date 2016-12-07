@@ -80,22 +80,26 @@ gulp.task('dev:configureStore', () => {
 gulp.task('dev:libs', () => {
     return gulp.src(['src/libs/redux-logger.js'])
         .pipe(plugins.babel())
-        .pipe(gulp.dest('dist/libs'))
+        .pipe(gulp.dest('dist/libs/'))
 });
-gulp.task('development', () => {
+gulp.task('development', ['compile'], next => {
     runSequence([
-            'dev:configureStore',
-            'dev:libs'
-        ]
-    )
+        'dev:configureStore',
+        'dev:libs'
+    ], next)
 });
-gulp.task('configure-pro', () => {
+gulp.task('pro:configureStore', () => {
     return gulp.src(['src/configureStore.pro.js'])
         .pipe(plugins.babel())
         .pipe(plugins.uglify())
         .pipe(plugins.rename({basename: 'configureStore'}))
         .pipe(gulp.dest('dist'))
 });
-gulp.task('default', ['compile', 'development']);
+gulp.task('production', ['compile'], next => {
+    runSequence([
+        'pro:configureStore'
+    ], next)
+});
+gulp.task('default', ['development']);
 
-gulp.task('deploy', ['compile', 'configure-pro']);
+gulp.task('deploy', ['production']);

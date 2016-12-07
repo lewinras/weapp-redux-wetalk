@@ -1,21 +1,34 @@
 <view class="container">
     <scroll-view scroll-y="true" class="container" bindscrolltolower="handleLoadMore">
-        <view class="detail-info">
-            <image src="{{oractor.avatar}}?imageView2/2/w/80/h/80"/>
-            <text class="title font-normal font-deep">{{title}}</text>
-            <text class="name font-normal font-deep">{{oractor.name}}</text>
-            <view wx:if="{{oractor.tags.length}}" class="tags">
-                <block wx:for="{{oractor.tags}}" wx:key="this*">
-                    <text wx:if="{{index > 0}}" class="font-light font-thick info">| {{item}}</text>
-                    <text wx:else class="font-light info">{{item}}</text>
-                </block>
-                <view class="container2">
-                    <view class="divider1"/>
-                </view>
+        <view class="make-info">
+            <view class="maker">
+                <image class="avatar" src="{{creator.avatar}}?imageView2/2/w/40/h/40"/>
+                <text>{{creator.name}}</text>制作
             </view>
-            <view class="font-deep font-thick description">{{oractor.description}}</view>
-            <view class="container1 font-light font-thick">
-                <view class="font-green">{{participant_num}}</view>人已参加
+            <view class="be-maker">
+                <text>成为制作人></text>
+                <view/>
+            </view>
+
+        </view>
+        <view class="divider"/>
+        <view class="detail-info">
+            <image class="avatar" src="{{oractor.avatar}}?imageView2/2/w/80/h/80"/>
+            <text class="name">{{oractor.name}}</text>
+            <text class="title">{{title}}</text>
+            <!--<view wx:if="{{oractor.tags.length}}" class="tags">-->
+            <!--<block wx:for="{{oractor.tags}}" wx:key="this*">-->
+            <!--<text wx:if="{{index > 0}}" class="info">| {{item}}</text>-->
+            <!--<text wx:else class="info">{{item}}</text>-->
+            <!--</block>-->
+            <!--</view>-->
+            <view wx:if="{{oractor.description}}" class="container2">
+                <view class="divider1"/>
+                <view class="description">{{oractor.description}}</view>
+            </view>
+            <view class="container1">
+                <view>{{participant_num}}</view>
+                人已参加
             </view>
             <view class="button">
                 <view wx:if="{{!locked}}" class="locked">已解锁以下全部内容</view>
@@ -27,24 +40,39 @@
         </view>
         <view wx:if="{{answer_type === 'voice'}}" class="audio-list">
             <block wx:for="{{questions.items}}" wx:key="this*">
-                <text class="title font-deep font-thick">{{item.content}}</text>
+                <text class="title">{{item.content}}</text>
                 <view class="container1">
                     <image class="avatar" src="{{oractor.avatar}}?imageView2/2/w/50/h/50"/>
-                    <view style="width:{{item.answers_length > 60? '200px' : '120px'}}">
-                        <view style="background-color:{{item.locked ? '#9ba3b4' : '#2fbd83'}}" class="audio">
-                        </view>
+                    <view wx:if="{{item.answers_length > 60 }}" class="audio">
+                        <view wx:if="{{item.locked}}"/>
+                        <view wx:else class="unlocked"/>
                     </view>
-                    <text class="audio-length font-light font-thick">{{audio_lengths[index]}}</text>
+                    <view wx:else class="audio-short">
+                        <view wx:if="{{item.locked}}"/>
+                        <view wx:else class="unlocked"/>
+                    </view>
+                    <text class="audio-length">{{item.answers_time}}</text>
                 </view>
                 <view class="divider1"/>
+            </block>
+        </view>
+        <view wx:elif="{{answer_type === 'text' }}" class="text-list">
+            <block wx:for="{{questions.items}}" wx:key="this*">
+                <text wx:if="{{item.locked}}" class="title-locked">{{item.content}}</text>
+                <text wx:else class="{{title-unlocked}}">{{item.content}}</text>
+                <view class="container1">
+                    <image class="avatar" src="{{oractor.avatar}}?imageView2/2/w/50/h/50"/>
+                    <text class="locked" wx:if="{{item.locked}}">解锁后可查看···</text>
+                    <text class="unlocked" wx:else></text>
+                </view>
             </block>
         </view>
         <view wx:if="{{questions.isEnd}}" class="comment-list">
             <view class="item">
                 <image class="avatar" src="{{oractor.avatar}}?imageView2/2/w/60/h/60"/>
                 <view class="container1">
-                    <text class="name font-light font-normal">{{oractor.name}} (小讲师)</text>
-                    <text class="content font-thick font-deep">欢迎大家向我提问，一起讨论，点击此留言回复我吧。 关注二维码可以收到回复通知</text>
+                    <text class="name">{{oractor.name}} (小讲师)</text>
+                    <text class="content">欢迎大家向我提问，一起讨论，点击此留言回复我吧。 关注二维码可以收到回复通知</text>
                     <image class="qrcode"
                            src="http://cdn-img.duilu.me/b2ed6d06481d2cb6d8b79a57746991f6?imageView2/2/w/330/h/330"/>
                 </view>
@@ -54,11 +82,11 @@
                 <view class="item">
                     <image class="avatar" src="{{item.user.avatar}}?imageView2/2/w/60/h/60"/>
                     <view class="container1">
-                        <text class="name font-light font-normal">{{item.user.name}}</text>
-                        <text class="content font-thick font-deep">{{item.content}}</text>
+                        <text class="name">{{item.user.name}}</text>
+                        <text class="content">{{item.content}}</text>
                         <view wx:if="{{item.parent.user}}" wx:key="this*" class="container2">
-                            <text class="name2 font-light font-normal">{{item.parent.user.name}}</text>
-                            <text class="content2 font-thick font-deep">{{item.parent.content}}</text>
+                            <text class="name2">{{item.parent.user.name}}</text>
+                            <text class="content2">{{item.parent.content}}</text>
                         </view>
                     </view>
                 </view>
@@ -67,7 +95,7 @@
         </view>
     </scroll-view>
     <view class="detail-bottom-bar">
-        <view class="all font-deep">全部小讲</view>
+        <view class="all">全部小讲</view>
         <view class="comment">参与讨论</view>
     </view>
 </view>

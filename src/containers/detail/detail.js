@@ -41,19 +41,31 @@ const pageConfig = {
     }
 };
 const mapStateToData = (state, props) => {
+    console.log('detail mapstateto data')
     const getVisitedTalk = makeGetVisitedTalk();
     const getTalkQuestions = makeGetTalkQuestions();
     const getTalkComments = makeGetTalkComments();
     const talk = getVisitedTalk(state, props);
+    if(talk && talk.product){
+        talk.product.price = talk.product.price ? Number(talk.product.price) : 0;
+    }
+
     const questions = getTalkQuestions(state, props);
-    console.log(questions.isEnd)
-    const audio_lengths = talk && talk.answer_type === 'voice' && questions.items ? questions.items.map(item => formatSecond(item.answers_length)) : [];
+    if (questions.items) {
+        questions.items.forEach(item => {
+                if (talk && talk.answer_type === 'voice') {
+                    item.answers_time = formatSecond(item.answers_length)
+                }
+                return item;
+            }
+        )
+    }
     const comments = getTalkComments(state, props);
     // const audioPlayer = getAudioPlayer(state, props);
     const currentUser = getCurrentUser(state, props);
     const id = props.id;
     const cookedTalk = Object.assign({}, talk, {id, questions, comments, /*audioPlayer,*/ currentUser});
-    return {...cookedTalk, audio_lengths};
+    return {...cookedTalk};
 
 };
 const mapDispatchToPage = dispatch =>

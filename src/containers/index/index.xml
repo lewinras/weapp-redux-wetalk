@@ -1,5 +1,5 @@
 <!--talks.wxml-->
-<import src="../../components/item/item"/>
+<import src="../../components/item/talks_item"/>
 <view class="container">
 <view class="talks-tab">
     <view class="container1">
@@ -16,8 +16,8 @@
 <scroll-view scroll-y="true" class="talks-scrollview" bindscrolltolower="handleLoadMore">
     <template is="talks-item" data="{{cookedItems, talks, windowWidth}}"/>
 </scroll-view>
-<loading hidden="{{!talks.isFetching}}">
-    加载中...
-</loading>
+<!--<loading hidden="{{!talks.isFetching}}">-->
+    <!--加载中...-->
+<!--</loading>-->
 </view>
 
