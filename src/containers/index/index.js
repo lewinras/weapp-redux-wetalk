@@ -2,6 +2,7 @@
 import {bindActionCreators} from '../../libs/redux';
 import {connect} from '../../libs/wechat-redux'
 import pick from '../../libs/lodash.pick';
+import merge from '../../libs/lodash.merge';
 import {fetchTalksIfNeeded, requestPostersIfNeeded, changeCategory} from '../../actions/talksActionCreators'
 import {requestBannerIfNeeded} from '../../actions/bannerActionCreators'
 import {initSystemInfo} from '../../actions/systemInfoActionCreators'
@@ -13,12 +14,8 @@ const getCookedItems = (previousItems = [], posters) =>
         return items;
     }, previousItems);
 
-const getPricedItems = (cookedItems = []) =>
-    cookedItems.map(item => item.product && item.product.price ? Number(item.product.price) : 0);
-
 
 const mapStateToData = (state, props) => {
-    const windowWidth = state.systemInfo.windowWidth;
     const data = makeGetTalksList()(state);
     let banners = makeGetBanners()(state);
     banners.unshift({
@@ -26,17 +23,22 @@ const mapStateToData = (state, props) => {
         name: '全部'
     });
     const posters = makeGetPosters()(state);
-    const selectedIndex = state.talks.selectedIndex;
     const cookedItems = getCookedItems(data.items, posters);
-    const pricedItems = getPricedItems(cookedItems);
     console.log('index mapstatetodata');
     return {
-        windowWidth,
+        windowWidth: state.systemInfo.windowWidth,
         data: pick(data, ['isFetching', 'refs', 'isEnd', 'page', 'totalCount']),
         banners,
-        cookedItems,
-        pricedItems,
-        selectedIndex
+        cookedItems: merge(
+            {},
+            cookedItems,
+            cookedItems.map(item => {
+                if (item.product) {
+                    item.product.price = item.product && item.product.price ? Number(item.product.price) : 0;
+                }
+                return item
+            })),
+        selectedIndex: state.talks.selectedIndex
     }
 
 };
@@ -61,11 +63,10 @@ const pageConfig = {
     },
 
     categorySelected(e){
-        this.changeCategory(e.target.dataset.id)
+        this.changeCategory(Number(e.target.dataset.id))
 
     },
     onLoad(){
-        console.log('onstart');
         wx.getSystemInfo({
             success: res => this.initSystemInfo(res)
         })
@@ -73,10 +74,6 @@ const pageConfig = {
         this.requestBannerIfNeeded();
         this.requestPostersIfNeeded()
     },
-    onReady() {
-        console.log('ready');
-
-    }
 };
 
 const nextPageConfig = connect(mapStateToData, mapDispatchToPage)(pageConfig);

@@ -14,7 +14,7 @@
     </navigator>
 </view>
 <scroll-view scroll-y="true" class="talks-scrollview" bindscrolltolower="handleLoadMore">
-    <template is="talks-item" data="{{cookedItems, data, windowWidth, pricedItems}}"/>
+    <template is="talks-item" data="{{cookedItems, data, windowWidth}}"/>
 </scroll-view>
 <loading hidden="{{!data.isFetching}}">
     加载中...

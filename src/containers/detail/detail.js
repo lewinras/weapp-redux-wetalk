@@ -19,14 +19,11 @@ const pageConfig = {
     },
 
     handleLoadMore(){
-        console.log('dfddsfdfsdfsdsdfsd')
         if (!this.data.questions.isEnd) {
             if (!this.data.questions.isFetching)
-                console.log('fetchquestion')
                 this.fetchQuestionsIfNeeded(this.data.id, this.data.questions.page)
         } else if (!this.data.comments.isEnd) {
             if (!this.data.comments.isFetching)
-                console.log('fetchcomment')
                 this.fetchCommentsIfNeeded(this.data.id, this.data.comments.page)
 
         }

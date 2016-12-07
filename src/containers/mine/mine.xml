@@ -1,15 +1,15 @@
-<view class="container">
-    <view class="user-blank">
-        <image class="user-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"/>
-        <text class="user-nickname font-medium">{{userInfo.nickName}}</text>
+<scroll-view scroll-y="true" class="container" bindscrolltolower="handleLoadMore">
+    <view class="blank">
+        <image class="avatar" src="{{userInfo.avatar}}" background-size="cover"/>
+        <text class="name">{{userInfo.name}}</text>
     </view>
-    <block wx:for="{{list}}" wx:key="this*">
-        <view class="user-talks-owned">
-            <text class="font-normal font-deep user-talks-title">{{item.title}}</text>
-            <view class="user-container1">
-                <image class="user-talks-avatar" src="{{item.avatar}}"/>
-                <text class="user-talks-oractor font-normal font-light">{{item.name}}</text>
+    <block wx:for="{{glances.items}}" wx:key="this*">
+        <view class="talks-owned">
+            <text class="talks-title">{{item.title}}</text>
+            <view class="container1">
+                <image class="talks-avatar" src="{{item.avatar}}"/>
+                <text class="talks-oractor">{{item.name}}</text>
             </view>
         </view>
     </block>
-</view>
+</scroll-view>
