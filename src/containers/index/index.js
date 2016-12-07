@@ -3,8 +3,8 @@ import {bindActionCreators} from '../../libs/redux';
 import {connect} from '../../libs/wechat-redux'
 import pick from '../../libs/lodash.pick';
 import merge from '../../libs/lodash.merge';
-import {fetchTalksIfNeeded, requestPostersIfNeeded, changeCategory} from '../../actions/talksActionCreators'
-import {requestBannerIfNeeded} from '../../actions/bannerActionCreators'
+import {fetchTalksIfNeeded, requestPostersIfNeeded} from '../../actions/talksActionCreators'
+import {requestBannerIfNeeded, changeCategory} from '../../actions/bannerActionCreators'
 import {initSystemInfo} from '../../actions/systemInfoActionCreators'
 import{makeGetBanners, makeGetPosters, makeGetTalksList} from '../../selectors/index'
 
@@ -36,7 +36,7 @@ const mapStateToData = (state, props) => {
         talks: {...pick(data, ['isFetching', 'refs', 'isEnd', 'page', 'totalCount'])},
         banners,
         cookedItems: makeGetCookedItems(data.items, posters),
-        selectedIndex: state.talks.selectedIndex
+        selectedIndex: state.banners.selectedIndex
     }
 
 };

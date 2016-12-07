@@ -4,7 +4,6 @@
 export const REQUEST_TALKS = 'REQUEST_TALKS';
 export const RECEIVE_TALKS = 'RECEIVE_TALKS';
 export const SET_REFS = 'SET_REFS';
-export const CHANGE_CATEGORY = 'CHANGE_CATEGORY';
 import {CALL_API} from '../middlewares/api';
 import Schemas from '../schemas/schema';
 
@@ -68,15 +67,3 @@ export function requestPostersIfNeeded() {
 }
 
 
-export function changeCategory(categoryId = 0) {
-    return (dispatch, getState) => {
-        if (getState().talks[categoryId]) {
-            dispatch({
-                type: CHANGE_CATEGORY,
-                id: categoryId
-            })
-        }else{
-            dispatch(fetchTalksIfNeeded(1,"",categoryId))
-        }
-    }
-}

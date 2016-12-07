@@ -1,8 +1,11 @@
 import {
     REQUEST_BANNER_CATEGORY,
     RECEIVE_BANNER_CATEGORY,
+    CHANGE_CATEGORY,
 } from '../actions/bannerActionCreators';
-
+import {
+    RECEIVE_TALKS
+} from '../actions/talksActionCreators'
 
 export default function banners(state = {}, action) {
     return {
@@ -25,6 +28,9 @@ function isFetchingBanner(state = false, action) {
 
 function selectedIndex(state = 0, action) {
     switch (action.type) {
+        case CHANGE_CATEGORY:
+        case RECEIVE_TALKS:
+            return action.id;
         default:
             return state;
     }

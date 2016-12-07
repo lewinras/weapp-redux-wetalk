@@ -45,7 +45,7 @@ export const getCurrentUserData = createSelector(
 )
 
 const getTalksByCategory = state => {
-    let id = state.talks.selectedIndex || 0;
+    let id = state.banners.selectedIndex || 0;
     return getTalks(state)[id] || {};
 }
 
