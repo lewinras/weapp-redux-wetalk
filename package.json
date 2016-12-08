@@ -19,6 +19,7 @@
     "gulp-babel": "^6.1.2",
     "gulp-cssnano": "^2.1.2",
     "gulp-htmlmin": "^3.0.0",
+    "gulp-i18n-localize": "^1.2.7",
     "gulp-if": "^2.0.1",
     "gulp-imagemin": "^3.0.3",
     "gulp-jsonminify": "^1.0.0",

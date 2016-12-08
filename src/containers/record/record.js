@@ -1,5 +1,25 @@
-Page({
+import {bindActionCreators} from '../../libs/redux';
+import {connect} from '../../libs/wechat-redux';
+import{
+    requestTalkQuestionsIfNeed
+} from '../../actions/recordingPageActionCreator';
+import { makeGetTalkAndQuestions } from '../../selectors/index.js';
+const pageConfig = {
     data: {
-        list: ["入职网易三个月的工作状态和感受？","拿到offer的情况，网易special offer有什么样的特别之处","为了进入产品经理这个岗位，前期做了哪些刻苦准备","网易的校招流程是怎么样，有怎么样的笔试和面试的经历"]
+
+    },
+    onLoad(options){
+        if(options.id) {
+            this.setData({id: options.id})
         }
-    })
+        this.requestTalkQuestionsIfNeed(this.data.id)
+    }
+};
+const mapStateToData = (state, props) => {
+    const talk = makeGetTalkAndQuestions()(state, props);
+    return {talk, ...state.recordingPage}
+};
+
+const mapDispatchToPage = dispatch =>
+    bindActionCreators({requestTalkQuestionsIfNeed}, dispatch);
+Page(connect(mapStateToData,mapDispatchToPage)(pageConfig));

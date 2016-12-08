@@ -1,0 +1,338 @@
+{
+  "i18n": {
+    "validators": {
+      "isRequired": "{{name}}不能为空",
+      "isPhoneNumber": "{{name}}不是有效的手机号码",
+      "atMost": "{{name}}不能超过{{count}}字",
+      "atLeast": "{{name}}不能少于{{count}}字"
+    },
+    "common": {
+      "error": "发生错误",
+      "noContent": "暂无内容",
+      "free": "限时免费",
+      "total": "全部",
+      "listen": "元收听",
+      "submit": "提交",
+      "noName": "未指定用户",
+      "check": "元查看",
+      "unlockToCheck": "解锁后可查看...",
+      "isFetching": "玩了命地加载中...",
+      "isEnd": "没有更多内容了"
+    },
+    "payment": {
+      "failed": "支付失败",
+      "canceled": "取消支付"
+    },
+    "shareInfo": "分享朋友圈免费解锁",
+    "allTalks": "全部小讲",
+    "sendSuccess": "发送成功",
+    "indexTopBar": {
+      "handpick": "小讲精选",
+      "foreshow": "近期预告"
+    },
+    "titles": {
+      "talk": "对路小讲",
+      "consultation": "对路支招"
+    },
+    "monetaryUnit": "元",
+    "howMuchToPay": "向我提问需要支付",
+    "share": {
+      "consultation": {
+        "title": "{{name}}回答了提问\"{{question}}\"",
+        "desc": "年轻人成长经历和经验的线上访谈"
+      },
+      "consultant": {
+        "title": "{{name}}正在支招，有问题快来请教他",
+        "desc": "年轻人成长经历和经验的线上访谈"
+      },
+      "default": {
+        "title": "年轻人成长经历和经验的线上访谈",
+        "desc": "年轻人成长经历和经验的线上访谈"
+      },
+      "consultations": {
+        "title": "总有一个是你求职遇到的问题，来听听过来人的回答",
+        "desc": "年轻人成长经历和经验的线上访谈"
+      },
+      "newTalk": {
+        "title": "对路小讲采访准备",
+        "oneYear": "工作一年混成什么样，听听他们的故事，还有红包拿"
+      },
+      "activities": {
+        "oneYear": "工作一年混成什么样，听听他们的故事"
+      }
+    },
+     "errors": {
+      "404": "页面没找到"
+    },
+    "menus": {
+      "talks": "小讲",
+      "profile": "我的",
+      "qa": "问答"
+    },
+    "qrcode": {
+      "subscribeHint": "务必关注「对路」服务号</br>才能收到回答、付费、讨论的通知",
+      "talks": "长按识别，关注服务号</br>随时随地获取最新小讲"
+    },
+
+    "profile": {
+      "answer": "回答",
+      "i_ask": "我问",
+      "i_see": "我看",
+      "i_answer": "我答",
+      "i_sponsor": "我赞助的",
+      "hasInterestingThing": "有料",
+      "noBodyAsks": "还没有人向你提问",
+      "noBodyAnswers": "你还没有任何提问",
+      "noGlances": "暂无内容",
+      "noOpenYet": "只有认证小讲师才能回答问题哦！",
+      "beOractor": "申请成为小讲师",
+      "lookForQuestion": "去看看有哪些有用的问题",
+      "lookForPerson": "去看看有哪些老司机",
+      "shareMyProfile": "立即分享个人页，邀请朋友向你提问"
+    },
+    "questionForm": {
+      "anonymityQuestion": "匿名提问",
+      "inputPrompt": "在此输入问题，等他回答",
+      "questionAnswered": "他回答的{{count}}个问题",
+      "postQuestion": "提交问题",
+      "question": "问题"
+    },
+    "openServiceForm": {
+      "open": "开通支招",
+      "howMuchToPay": "向我提问需要支付",
+      "monetarySymbol": "￥",
+      "descriptionPrompt": "介绍自己，当前公司职务、毕业学校、专业、实习工作过的公司、从事过的岗位、擅长的行业领域等，限100个字。例如：阿里HR，浙江大学心理学专业，工作过网易、阿里，一直从事HR岗位，对企业招聘、人才发展、职业规划有多年积累。",
+      "ok": "确定",
+      "description": "描述"
+    },
+    "card": {
+      "forFree": "限时免费",
+      "toSee": "点击查看",
+      "glance": "查看",
+      "like": "有料",
+      "answer": "回答",
+      "private": "问题不公开",
+      "anonymous": "匿名",
+      "waitAnswer": "待回答",
+      "expired": "已过期",
+      "fromQuestioner": "{{name}}的提问",
+      "fromConsultant": "{{name}}的回答",
+      "answeredAt": "{{time}}",
+      "askHim": "向 Ta 提问",
+      "askTo": "向{{name}}提问",
+      "waitingAnswer": "等待回答",
+      "answerPlaceholder": "在此输入回答",
+      "submitAnswer": "提交回答",
+      "hot": "热门推荐",
+      "source": "来自小讲：",
+      "zan": "赞"
+    },
+    "questionSuccess": {
+      "askSuccess": "提问成功！",
+      "longTouch": "长按识别",
+      "makeAppointmentSuccess": "约聊成功！"
+    },
+    "talk": {
+      "attrs": {
+        "startedAt": "小讲时间",
+        "duration": "小讲时长",
+        "shareMode": "小讲形式"
+      },
+      "info": {
+        "prompt": "有更多疑问，可以约小讲师",
+        "oneToOne": "一对一聊聊",
+        "creator": "本期小讲制作人<text>{{creator.name}}</text>"
+      },
+      "state": {
+        "isGoing": "已开始",
+        "ended": "已结束"
+      },
+      "questions_title": "小讲内容",
+      "comments_title": "用户评论",
+      "consultations_title": "讲师问答",
+      "voice_number": "<span>{{count}}</span>分钟语音回答",
+      "participantNum": "<view>{{participant_num}}</view>人已参加",
+      "startedAtFormat": "%m月%d日 %W%H:%M",
+      "askHim": "去支招向他提问",
+      "points": "小讲要点",
+      "material": "独家秘籍",
+      "materialFree": "免费",
+      "materialDesc": "<span>准备阶段的各种资料文档，已放置云盘<br />参与即可免费获取</span>",
+      "scope": "适合人群",
+      "takePartIn": "参与方式",
+      "explain": "小讲说明",
+      "moreTalks": "小讲精选",
+      "scan": "扫码添加助手",
+      "wechatPay": "微信支付费用",
+      "entrance": "助手邀请入群",
+      "participate": "参与小讲",
+      "qrCodeDesc": "<span>长按识别，添加小助手</br>定期推送小讲预告和内容精要</span>",
+      "oractor": "小讲师",
+      "toShowPastContent": "更多拿offer经验，点击查看{{count}}期小讲精选",
+      "checkTalks": "查看精选",
+      "TalkShareDesc": "时间：{{time}}",
+      "more": "查看全部小讲",
+      "moreTip": "找到身边老司机，挖出TA的秘密，即得50元现金红包",
+      "shareListTitle": "他们正在讲校招中如何拿到全球顶级公司的dream offer",
+      "shareListDesc": "对路小讲，最真实鲜活的拿 offer 经验",
+      "commentTalkShareTitle": "请评价本场小讲（{{title}}）",
+      "moreInfo": "展开更多信息",
+      "lessInfo": "收起更多信息",
+      "unlockprompt": "以下内容赞助后可以收听",
+      "unlockpromptForFree": "以下内容解锁后可收听",
+      "unlockpromptConsultation": "以下内容赞助后可以查看",
+      "payForUnlocked": "赞助{{product.price}}元解锁以下全部内容",
+      "payForFree": "限时免费解锁以下全部内容",
+      "unlocked": "已解锁以下全部内容",
+      "goToUnlock": "解锁",
+      "goToPay": "支付",
+      "explainItems": {
+        "price": "{{price}} 元打赏小讲师",
+        "gift": "赠送讲师独家秘籍"
+      },
+      "timeTags": {
+        "today": "今天开讲",
+        "tomorrow": "明天开讲",
+        "daysLater": "{{count}}天后开讲"
+      },
+      "search": {
+        "noContent": "暂无内容，请重新搜索",
+        "search": "搜索"
+      },
+      "consultationForm": {
+        "placeholder": "你可以免费向小讲师提问或追问，小讲师回答后会通过服务号通知你",
+        "submit": "提问",
+        "success": "提问成功",
+        "answer": "回答",
+        "postForFree": "免费提问"
+      },
+      "commentForm": {
+        "content": "评价",
+        "contentPlaceholder": "留下你想说的",
+        "replyPlaceholder": "回复{{name}}：",
+        "submit": "发送",
+        "commented": "感谢你的评价！"
+      },
+      "appointmentForm": {
+        "phoneNumber": "电话号码",
+        "description": "描述"
+      },
+      "comment": {
+        "operators": {
+          "cancel": "取消",
+          "reply": "回复",
+          "delete": "删除"
+        },
+        "leaveMessage": "参与讨论",
+        "qrHint": "关注服务号，接收回复通知",
+        "oractorName": "{{oractor.name}}(小讲师)",
+        "defaultComment": "欢迎大家向我提问，一起讨论，点击此留言回复我吧。关注二维码可以收到回复通知哦。"
+      },
+      "result": {
+        "topper": {
+          "talks": "小讲",
+          "comments": "评论",
+          "consultations": "问答"
+        }
+      }
+    }
+  },
+  "recording": {
+    "tabbar": {
+      "voice": "语音回答",
+      "text": "文字回答",
+      "writeAnswer": "写回答..."
+    },
+    "topCard": {
+      "questionPrompt": "填写老司机的信息和采访提问，生成采访页并分享给老司机，老司机完成回答，小讲官方审核合格后，双方即可平分<span>50元现金红包</span>。",
+      "answerPrompt": "说明：完成朋友对你的访谈，收录进小讲精选后，双方即可获得小讲提供的奖励红包，以及后续用户付费的收入（发放到微信钱包）。",
+      "oneYear": "朋友毕业工作一年了，TA还好吗，你有什么想问TA的？小讲请你一起来关心下朋友，小讲还准备了几份小礼物，在感恩节给最走心的TA。</br></br>赶快在下方填写并发送给朋友吧！（参与成功双方可各得10元红包，通过微信支付发放，礼物会选取部分朋友送出）",
+      "othersLink": "查看本期专题其他人的访谈 >"
+    },
+    "oneYear": {
+      "shareInfo": "{{name}}邀请你做个访谈，{{title}}",
+      "section1": "，工作一年多，在",
+      "section2": "做",
+      "section3": "的你还好吗？",
+      "campany": "行业/公司",
+      "profession": "职业/岗位",
+      "title": "{{name}}，工作一年多，在{{company}}做{{profession}}的你还好吗？",
+      "addOn": "我还想问：",
+      "fillQuestion": "填写问题内容",
+      "answerPrompt": "说明：完成朋友对你的访谈，收录进WeTalk专题后，双方各获得10元现金红包（发放到微信钱包），对高质量的访谈，我们还会送上小礼物。",
+      "askFrom": "{{name}}邀请你做一个访谈",
+      "share": "分享给你的朋友吧"
+    },
+    "questionForm": {
+      "title": {
+        "teacherInfo": "受访人信息",
+        "questions": "想问TA的：",
+        "generatePage": "发送给TA"
+      },
+      "form": {
+        "title": "主题，例如拿到BAT offer",
+        "name": "姓名或昵称",
+        "school": "大学名称，例如浙江大学",
+        "major": "就读专业，例如计算机专业",
+        "year": "（选填）就读年级，例如2016届",
+        "intro": "经验简介，例如参加了阿里，腾讯，百度的17年校招，都走到了终面，拿到了阿里special offer,在校期间曾参加创业大赛获得一等奖，经营个人公众号拥有十万粉丝",
+        "prompt": "老司机带带我，如何",
+        "oneYear": ""
+      },
+      "questions": [
+        "你拿到XX公司offer有什么样的笔试、面试经历？",
+        "你在XX公司实习主要做什么？有遇到什么样的挑战，有什么样的收获？",
+        "XX岗位都 工作内容是什么？需要什么样的技能？发展空间如何？",
+        "你在XX面试，面试官问了什么问题，你是如何回答的，面试官给了什么评价反馈？",
+        "针对XX公司XX岗位，你的简历有相应什么样的调整，主要突出什么方面？",
+        "在大学期间创业，如何平衡好学业和事业的经历安排？",
+        "你的创业过程中，如何拿到投资、搭建团队、调整方向、市场推广等？",
+        "拿到雅思8.0，你做了什么样的准备？有什么特别的技巧？",
+        "你是如何找到去澳洲打工游学的机会的？需要做些什么样的准备？",
+        "做兼职模特需要哪些条件？如何才能进入这个圈子？",
+        "去西藏做公益是什么样的体验？有不适应的地方吗？有什么印象深刻的经历？",
+        "你的一天工作都会做什么？最频繁的工作任务是什么？",
+        "你成功保研到XXX，有做了什么准备？",
+        "成功拿到全美top 30的大学录取通知书，你觉得自己哪方面最被认可？",
+        "你是如何追到校花女朋友的，你们感情还好吗？不好的话，你女朋友的联系方式是什么？"
+      ],
+      "oneYear": [
+        "这一年工作忙吗？每天的工作主要做些什么？有遇到什么艰难的或者有成就感的事情吗？",
+        "现在生活的城市怎么样？生活开销大吗，要花在哪些地方，能攒下钱吗？",
+        "选择现在的公司和岗位主要考虑什么？有跳槽过吗？想过之后有些变化吗？",
+        "现在的工作需要哪些技能，你是如何学习的？要是回到大学，你希望重新做些什么？",
+        "工作后，交际圈有什么变化吗，工作之余会有哪些活动？现在还单身吗，单身的话，对另一半有什么期待？"
+      ]
+    },
+    "detail": {
+      "interviewFrom": "{{name}}邀请你做一个采访",
+      "modify": "修改信息",
+      "answer": "录音回答",
+      "recording": "录音中...",
+      "play": "点击播放",
+      "anotherOne": "再录一条",
+      "delete": "删除",
+      "submit": "提交",
+      "alreadySubmit": "已提交",
+      "listening": "试听中",
+      "shareInfo": {
+        "activity": "{{name}}邀请你做个访谈，{{title}}",
+        "normal": "{{name}}邀请你做个访谈"
+      },
+      "submitPrompt2": "部分录音也可以提交",
+      "submitPrompt": "你可以暂时关掉页面，已录入的内容将自动保存<br />下次打开可以继续完成访谈"
+    },
+    "alert": {
+      "recording": "目前正在录音，请稍后再试",
+      "notAnswerAll": "还有未回答问题,是否确认提交",
+      "notProfileAll": "请填写完整讲师信息",
+      "notQuestionThree": "请填写至少三个问题",
+      "sureToDelete": "是否确定删除这条录音",
+      "sureToSubmit": "是否确认提交",
+      "notAnswerYet": "还未回答问题",
+      "noRepeatSubmit": "请勿重复提交",
+      "prompt": "采访成功",
+      "subscribeHint": "务必关注「对路」服务号</br>才能收到回答、付费、讨论的通知"
+    }
+  }
+}

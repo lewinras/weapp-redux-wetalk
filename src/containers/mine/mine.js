@@ -27,10 +27,15 @@ const pageConfig = {
     },
     clickItem(e){
         console.log(e)
-       if( e.currentTarget.dataset.completed)
-           wx.navigateTo({
-               url: `../detail/detail?id=${e.currentTarget.dataset.id}`
-           })
+        if (e.currentTarget.dataset.completed === 'true') {
+            wx.navigateTo({
+                url: `../detail/detail?id=${e.currentTarget.dataset.id}`
+            })
+        }else{
+            wx.navigateTo({
+                url: `../record/record?id=${e.currentTarget.dataset.slug_id}`
+            })
+        }
     }
 };
 const mapStateToData = (state, props) => {

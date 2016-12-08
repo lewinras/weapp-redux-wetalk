@@ -5,7 +5,7 @@ const gulpLoadPlugins = require('gulp-load-plugins');
 const plugins = gulpLoadPlugins();
 const env = process.env.NODE_ENV || 'development';
 const isProduction = () => env === 'production';
-
+const I18n = require('gulp-i18n-localize');
 gulp.task('clean', del.bind(null, ['./dist/*']));
 
 
@@ -27,22 +27,32 @@ gulp.task('compile:img', () => {
         .pipe(gulp.dest('dist/images'))
 });
 
-gulp.task('compile:xml', () => {
+gulp.task('compile:xml:translation', () => {
     return gulp.src(['src/**/*.xml'])
-        .pipe(plugins.if(isProduction, plugins.htmlmin({
-            collapseWhitespace: true,
-            // collapseBooleanAttributes: true,
-            // removeAttributeQuotes: true,
-            keepClosingSlash: true, // xml
-            removeComments: true,
-            removeEmptyAttributes: true,
-            removeScriptTypeAttributes: true,
-            removeStyleLinkTypeAttributes: true
-        })))
-        .pipe(plugins.rename({extname: '.wxml'}))
-        .pipe(gulp.dest('dist'))
+        .pipe(I18n({
+                localeDir: './locales/zh'
+            }
+        ))
+        .pipe(gulp.dest('./dist'))
 });
-
+gulp.task('compile:xml:del', ['compile:xml:move'], del.bind(null, ['./dist/translation/']))
+gulp.task('compile:xml:move', ['compile:xml:translation'], () => {
+        return gulp.src(['dist/translation/**/*.xml'])
+            .pipe(plugins.if(isProduction, plugins.htmlmin({
+                collapseWhitespace: true,
+                // collapseBooleanAttributes: true,
+                // removeAttributeQuotes: true,
+                keepClosingSlash: true, // xml
+                removeComments: true,
+                removeEmptyAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkTypeAttributes: true
+            })))
+            .pipe(plugins.rename({extname: '.wxml'}))
+            .pipe(gulp.dest('./dist'))
+    }
+);
+gulp.task('compile:xml', ['compile:xml:del'])
 gulp.task('compile:css', () => {
     return gulp.src(['src/**/*.css'])
         .pipe(plugins.rename({extname: '.wxss'}))
@@ -71,35 +81,27 @@ gulp.task('compile', ['clean'], next => {
     ], next)
 });
 
-gulp.task('dev:configureStore', () => {
+gulp.task('dev:configureStore', ['compile'], () => {
     return gulp.src(['src/configureStore.dev.js'])
         .pipe(plugins.babel())
         .pipe(plugins.rename({basename: 'configureStore'}))
         .pipe(gulp.dest('dist'))
 });
-gulp.task('dev:libs', () => {
+gulp.task('dev:libs', ['dev:configureStore'], () => {
     return gulp.src(['src/libs/redux-logger.js'])
         .pipe(plugins.babel())
         .pipe(gulp.dest('dist/libs/'))
 });
-gulp.task('development', ['compile'], next => {
-    runSequence([
-        'dev:configureStore',
-        'dev:libs'
-    ], next)
-});
-gulp.task('pro:configureStore', () => {
+gulp.task('development', ['dev:libs']);
+gulp.task('pro:configureStore', ['compile'], () => {
     return gulp.src(['src/configureStore.pro.js'])
         .pipe(plugins.babel())
         .pipe(plugins.uglify())
         .pipe(plugins.rename({basename: 'configureStore'}))
         .pipe(gulp.dest('dist'))
 });
-gulp.task('production', ['compile'], next => {
-    runSequence([
-        'pro:configureStore'
-    ], next)
-});
-gulp.task('default', ['development']);
+gulp.task('production', ['pro:configureStore']);
 
+
+gulp.task('default', ['development']);
 gulp.task('deploy', ['production']);

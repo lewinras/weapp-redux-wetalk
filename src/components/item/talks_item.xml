@@ -13,7 +13,7 @@
             <view class="bottom">
                 <image class="avatar" src="{{item.oractor.avatar}}?imageView2/2/w/60/h/60"></image>
                 <view style="background-color:{{item.product.price > 0? '#2fbd83':'#4990e2'}}" class="voice-bar">
-                    <text class="voice-text">{{(item.product.price >= 0.01) ? item.product.price + (item.answer_type === 'voice'? '元收听' : '元查看') : '限时免费'}}
+                    <text class="voice-text">{{(item.product.price >= 0.01) ? item.product.price + (item.answer_type === 'voice'? '${{i18n.common.listen}}$' : '${{i18n.common.check}}$') : '${{i18n.common.free}}$'}}
                     </text>
                 </view>
             </view>
@@ -22,10 +22,10 @@
     <view class="footbar">
         <view wx:if="{{ !isEnd && items.length != 0 }}">
             <image src="/images/loading.gif" mode="aspectFill"/>
-            <text>玩了命的加载中...</text>
+            <text>${{i18n.common.isFetching}}$</text>
         </view>
         <view wx:elif="{{items.length != 0}}">
-            <text>没有更多内容了</text>
+            <text>${{i18n.common.isEnd}}$</text>
         </view>
 
     </view>

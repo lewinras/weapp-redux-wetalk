@@ -5,11 +5,8 @@
             <view class="container1">
             <input bindinput="bindInput"/>
             </view>
-            <view catchtap='searchQuestion' class="button">搜索</view>
+            <view catchtap='searchQuestion' class="button">${{i18n.talk.search.search}}$</view>
         </view>
         <template is="talks-item" data="{{isEnd, items}}"/>
     </scroll-view>
-    <loading hidden="{{!loading}}">
-        加载中...
-    </loading>
 </view>

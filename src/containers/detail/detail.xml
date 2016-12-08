@@ -3,13 +3,8 @@
         <view class="make-info">
             <view class="maker">
                 <image class="avatar" src="{{creator.avatar}}?imageView2/2/w/40/h/40"/>
-                <text>{{creator.name}}</text>制作
+                ${{i18n.talk.info.creator}}$
             </view>
-            <view class="be-maker">
-                <text>成为制作人></text>
-                <view/>
-            </view>
-
         </view>
         <view class="divider"/>
         <view class="detail-info">
@@ -27,15 +22,14 @@
                 <view class="description">{{oractor.description}}</view>
             </view>
             <view class="container1">
-                <view>{{participant_num}}</view>
-                人已参加
+                ${{i18n.talk.participantNum}}$
             </view>
             <view class="button">
-                <view wx:if="{{!locked}}" class="locked">已解锁以下全部内容</view>
-                <view wx:elif="{{product.price > 0}}">
-                    {{'赞助'+product.price+'元解锁以下全部内容'}}
+                <view wx:if="{{!locked}}">${{i18n.talk.unlocked}}$</view>
+                <view wx:elif="{{product.price > 0}}" class="locked">
+                    ${{i18n.talk.payForUnlocked}}$
                 </view>
-                <view wx:else class="unlocked-free">限时免费解锁以下全部内容</view>
+                <view wx:else class="unlocked-free">${{i18n.talk.payForFree}}$</view>
             </view>
         </view>
         <view wx:if="{{answer_type === 'voice'}}" class="audio-list">
@@ -43,11 +37,7 @@
                 <text class="title">{{item.content}}</text>
                 <view class="container1">
                     <image class="avatar" src="{{oractor.avatar}}?imageView2/2/w/50/h/50"/>
-                    <view wx:if="{{item.answers_length > 60 }}" class="audio">
-                        <view wx:if="{{item.locked}}"/>
-                        <view wx:else class="unlocked"/>
-                    </view>
-                    <view wx:else class="audio-short">
+                    <view  class="{{item.answers_length > 60 ? 'audio' : 'audio-short'}}">
                         <view wx:if="{{item.locked}}"/>
                         <view wx:else class="unlocked"/>
                     </view>
@@ -58,12 +48,11 @@
         </view>
         <view wx:elif="{{answer_type === 'text' }}" class="text-list">
             <block wx:for="{{questions.items}}" wx:key="this*">
-                <text wx:if="{{item.locked}}" class="title-locked">{{item.content}}</text>
-                <text wx:else class="{{title-unlocked}}">{{item.content}}</text>
+                <text class="{{item.locked ? 'title-locked' : 'title-unlocked'}}">{{item.content}}</text>
                 <view class="container1">
                     <image class="avatar" src="{{oractor.avatar}}?imageView2/2/w/50/h/50"/>
-                    <text class="locked" wx:if="{{item.locked}}">解锁后可查看···</text>
-                    <text class="unlocked" wx:else></text>
+                    <text class="locked" wx:if="{{item.locked}}">${{i18n.common.unlockToCheck}}$</text>
+                    <text class="unlocked" wx:else>{{item.answers[0].content}}</text>
                 </view>
             </block>
         </view>
@@ -71,8 +60,8 @@
             <view class="item">
                 <image class="avatar" src="{{oractor.avatar}}?imageView2/2/w/60/h/60"/>
                 <view class="container1">
-                    <text class="name">{{oractor.name}} (小讲师)</text>
-                    <text class="content">欢迎大家向我提问，一起讨论，点击此留言回复我吧。 关注二维码可以收到回复通知</text>
+                    <text class="name">${{i18n.talk.comment.oractorName}}$</text>
+                    <text class="content">${{i18n.talk.comment.defaultComment}}$</text>
                     <image class="qrcode"
                            src="http://cdn-img.duilu.me/b2ed6d06481d2cb6d8b79a57746991f6?imageView2/2/w/330/h/330"/>
                 </view>
@@ -95,7 +84,7 @@
         </view>
     </scroll-view>
     <view class="detail-bottom-bar">
-        <view class="all">全部小讲</view>
-        <view class="comment">参与讨论</view>
+        <view class="all">${{i18n.allTalks}}$</view>
+        <view class="comment">${{i18n.talk.comment.leaveMessage}}$</view>
     </view>
 </view>

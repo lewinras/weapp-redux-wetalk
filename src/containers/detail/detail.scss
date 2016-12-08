@@ -21,14 +21,8 @@
       margin-left: 20px;
       margin-right: 10px;
     }
-  }
-  .be-maker {
-    color: $base-green;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    view {
-      width: 20px;
+    text {
+      color: $base-green;
     }
   }
 }
@@ -116,10 +110,10 @@
     line-height: 40px;
     font-size: 14px;
     view{
-      background-color: #2fbd83;
+      background-color: $base-gray;
       border-radius: 5px;
       &.locked{
-        background-color:$base-gray;
+        background-color:$base-green;
       }
       &.unlocked-free{
         background-color: $base-blue;
@@ -216,11 +210,13 @@
       line-height: 30px;
       color: $base-gray;
       font-size: 16px;
+      flex: 1;
     }
     .unlocked {
       line-height: 24px;
       color: $font-deep;
       font-size: 16px;
+      flex: 1;
     }
   }
 }
