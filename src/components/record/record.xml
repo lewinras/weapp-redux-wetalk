@@ -2,7 +2,7 @@
     <block wx:for="{{list}}" wx:key="this*">
         <view class="talks-text-record-item">
             <text class="title font-deep">{{item.content}}</text>
-            <textarea class="input" placeholder="写回答····"/>
+            <textarea class="input" placeholder="${{i18n.recording.tabbar.writeAnswer}}$"/>
             <view class="divider1"/>
         </view>
     </block>

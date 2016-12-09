@@ -5,10 +5,14 @@
                 <image class="avatar" src="{{creator.avatar}}?imageView2/2/w/40/h/40"/>
                 ${{i18n.talk.info.creator}}$
             </view>
+            <view class="be-maker">
+                <text>${{i18n.talk.info.beACreator}}$</text>
+                <view/>
+            </view>
         </view>
         <view class="divider"/>
         <view class="detail-info">
-            <image class="avatar" src="{{oractor.avatar}}?imageView2/2/w/80/h/80"/>
+            <image class="avatar" src="{{oractor.avatar}}?imageView2/2/w/80/h/80" catchtap="previewImage"/>
             <text class="name">{{oractor.name}}</text>
             <text class="title">{{title}}</text>
             <!--<view wx:if="{{oractor.tags.length}}" class="tags">-->

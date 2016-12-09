@@ -65,6 +65,10 @@
             text-align: center;
             line-height: 50px;
             font-size: 16px;
+            color: $base-gray;
+            &.selected {
+                color: $base-green;
+            }
         }
         .divider1 {
             height: 50px;
@@ -95,5 +99,6 @@
         margin-bottom: 24px;
         margin-left: 20px;
         margin-right: 20px;
+        color: $base-green;
     }
 }

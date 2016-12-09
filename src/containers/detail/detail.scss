@@ -25,6 +25,15 @@
       color: $base-green;
     }
   }
+  .be-maker {
+    color: $base-green;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    view {
+      width: 20px;
+    }
+  }
 }
 .divider {
   background-color: #e8e8e8;

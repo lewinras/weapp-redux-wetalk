@@ -4,7 +4,7 @@
     <view class="question">
         <view class="questioner">
             <image class="avatar" src="{{talk.creator.avatar}}?imageView2/2/w/50/h/50"/>
-            <text class="name">{{talk.creator.name}}邀请你做一个访谈</text>
+            <text class="name">${{i18n.recording.detail.interviewForm}}$</text>
         </view>
         <text class="title">{{talk.title}}</text>
         <text class="prompt">说明： 完成朋友对你的访谈，收录进WeTalk专题后，双方各获得10元现金红包（发放到微信钱包）。对高质量的访谈， 我们还会送上小礼物</text>
@@ -12,13 +12,13 @@
     </view>
     <view class="answer">
         <view class="container2">
-            <text style="color: #2fbd83">文字回答</text>
+            <text class="selected">${{i18n.recording.tabbar.text}}$</text>
             <view class="divider1"/>
-            <text style="color: #9ba3b4">语音回答</text>
+            <text>${{i18n.recording.tabbar.voice}}$</text>
         </view>
         <view class="divider2"/>
         <template is="talks-text-record" data="{{list: textQuestions}}"/>
-        <view class="comment">提交</view>
-        <text class="prompt font-green">你可以暂时关掉页面，下次打开可以继续回答</text>
+        <view class="comment">${{i18n.recording.detail.submit}}$</view>
+        <text class="prompt">${{i18n.recording.detail.submitPrompt}}$</text>
     </view>
 </scroll-view>

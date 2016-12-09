@@ -6,6 +6,7 @@ import {
     fetchQuestionsIfNeeded,
     fetchCommentsIfNeeded,
 } from '../../actions/talkActionCreators';
+import { payForTalk } from '../../actions/orderActionCreators';
 import {
     makeGetVisitedTalk,
     makeGetTalkQuestions,
@@ -36,8 +37,12 @@ const pageConfig = {
         this.fetchQuestionsIfNeeded(this.data.id)
 
     },
-    onReady(){
-
+    previewImage(){
+        if(this.data.oractor&&this.data.oractor.avatar){
+            wx.previewImage({
+                urls: [this.data.oractor.avatar]
+            })
+        }
     }
 };
 const mapStateToData = (state, props) => {
