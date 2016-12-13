@@ -140,7 +140,7 @@
       "info": {
         "prompt": "有更多疑问，可以约小讲师",
         "oneToOne": "一对一聊聊",
-        "creator": "本期小讲制作人<text>{{creator.name}}</text>"
+        "creator": "本期小讲制作人<text>{{creator.name}}</text>",
         "beACreator": "成为制作人>"
       },
       "state": {
@@ -151,7 +151,7 @@
       "comments_title": "用户评论",
       "consultations_title": "讲师问答",
       "voice_number": "<span>{{count}}</span>分钟语音回答",
-      "participantNum": "<view>{{participant_num}}</view>人已参加",
+      "participantNum": "<view>{{participant_num}}</view>人已加入",
       "startedAtFormat": "%m月%d日 %W%H:%M",
       "askHim": "去支招向他提问",
       "points": "小讲要点",
@@ -331,7 +331,7 @@
         "notAnswerYet": "还未回答问题",
         "noRepeatSubmit": "请勿重复提交",
         "prompt": "采访成功",
-        "subscribeHint": "务必关注「对路」服务号</br>才能收到回答、付费、讨论的通知"
+        "subscribeHint": "务必关注「小讲WeTalk」服务号</br>才能收到回答、更新的通知"
       }
     }
   }

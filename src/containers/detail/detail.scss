@@ -158,8 +158,16 @@
         height: 36px;
         border-radius: 0px 80px 80px 80px;
         background-color: $base-gray;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         &.unlocked{
           background-color: $base-green;
+        }
+        .bar-icon {
+          width:11px;
+          height: 16px;
+          margin-left: 20px;
         }
       }
     }
@@ -169,8 +177,16 @@
         height: 36px;
         border-radius: 0px 80px 80px 80px;
         background-color: $base-gray;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         &.unlocked{
           background-color: $base-green;
+        }
+        .bar-icon {
+          width:11px;
+          height: 16px;
+          margin-left: 20px;
         }
       }
     }

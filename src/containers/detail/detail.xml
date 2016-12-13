@@ -42,8 +42,12 @@
                 <view class="container1">
                     <image class="avatar" src="{{oractor.avatar}}?imageView2/2/w/50/h/50"/>
                     <view  class="{{item.answers_length > 60 ? 'audio' : 'audio-short'}}">
-                        <view wx:if="{{item.locked}}"/>
-                        <view wx:else class="unlocked"/>
+                        <view wx:if="{{item.locked}}">
+                            <image class="bar-icon" src="../../images/audio.png"/>
+                        </view>
+                        <view wx:else class="unlocked">
+                            <image class="bar-icon" src="../../images/audio.png"/>
+                        </view>
                     </view>
                     <text class="audio-length">{{item.answers_time}}</text>
                 </view>
