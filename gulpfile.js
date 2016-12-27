@@ -62,11 +62,9 @@ gulp.task('compile:css', () => {
 // Compile sass source to distribution directory
 gulp.task('compile:sass', () => {
     return gulp.src(['src/**/*.scss', '!src/components/**', '!src/base.scss'])
-        .pipe(plugins.sourcemaps.init())
         .pipe(plugins.sass())
         .pipe(plugins.if(isProduction, plugins.cssnano({compatibility: '*'})))
         .pipe(plugins.rename({extname: '.wxss'}))
-        .pipe(plugins.sourcemaps.write('.'))
         .pipe(gulp.dest('dist'))
 });
 
