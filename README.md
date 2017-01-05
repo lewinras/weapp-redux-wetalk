@@ -7,5 +7,10 @@
 
 在开发过程，不可避免地会遇到复杂的、互相引用的数据，我们使用nomalizr库将API请求返回的结果范式化处理，再更新到store树上，这样做的好处是将众多的数据视为一个虚拟数据库来管理，然后通过ID来索引。不仅管理方便，而且减少了数据重复造成的冗余。
 
+对于store树上的数据获取，我们使用reselect库创建方法来对store树上的数据处理成我们需要的结果来使用，同时reselect库还会将重复获取的不变数据进行缓存，提升数据获取速度。
+
 另外，笔者所用的wechat-redux库是charleyw前辈拿react-redux库所改，因为只实现了将state传入page,而未实现props和redux绑定，所以笔者又将该代码修改了一下。
+
 [charleyw前辈的wechat-redux项目链接](https://github.com/charleyw/wechat-weapp-redux)
+
+
